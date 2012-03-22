@@ -1,0 +1,23 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.triagelevel", 
+        "fields": {
+            "name": "Call List"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.triagelevel", 
+        "fields": {
+            "name": "Triage 2"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.triagelevel", 
+        "fields": {
+            "name": "Triage 3"
+        }
+    }
+]

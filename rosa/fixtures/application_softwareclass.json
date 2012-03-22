@@ -1,0 +1,30 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.softwareclass", 
+        "fields": {
+            "name": "D"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.softwareclass", 
+        "fields": {
+            "name": "F"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.softwareclass", 
+        "fields": {
+            "name": "G"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.softwareclass", 
+        "fields": {
+            "name": "H"
+        }
+    }
+]

@@ -1,0 +1,51 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "Finance, Acct, Budget"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "DMS"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "General Admin"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "Public"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "Payroll & Personnel"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "Property & Procurement"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "application.functionaltype", 
+        "fields": {
+            "name": "Support"
+        }
+    }
+]

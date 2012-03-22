@@ -1,0 +1,16 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.interfacemethod", 
+        "fields": {
+            "name": "Auto"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.interfacemethod", 
+        "fields": {
+            "name": "Manual"
+        }
+    }
+]

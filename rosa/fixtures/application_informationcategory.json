@@ -1,0 +1,16 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.informationcategory", 
+        "fields": {
+            "name": "Low"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.informationcategory", 
+        "fields": {
+            "name": "Moderate"
+        }
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "FOIA Except"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "FOIA"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Low"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Moderate"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Public by Request Only"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Public"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Public-Web Published"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "application.informationsensitivity", 
+        "fields": {
+            "name": "Sensitive but Unclassified"
+        }
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.authenticationmethod", 
+        "fields": {
+            "name": "ID/PW Only"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.authenticationmethod", 
+        "fields": {
+            "name": "ID/PW and Token"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.authenticationmethod", 
+        "fields": {
+            "name": "Launchpad"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.authenticationmethod", 
+        "fields": {
+            "name": "Token Only"
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "pk": null, 
+        "model": "application.supportingnetworkservices", 
+        "fields": {
+            "name": "Extranet"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.supportingnetworkservices", 
+        "fields": {
+            "name": "Intranet"
+        }
+    }
+]

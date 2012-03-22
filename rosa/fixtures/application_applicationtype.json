@@ -1,0 +1,23 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.applicationtype", 
+        "fields": {
+            "name": "C/S"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.applicationtype", 
+        "fields": {
+            "name": "Web Site"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.applicationtype", 
+        "fields": {
+            "name": "Web App"
+        }
+    }
+]

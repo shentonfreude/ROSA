@@ -1,0 +1,471 @@
+[
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "AH000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "BA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "BC000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "BJ000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "C520,"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "CF000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "CI000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "DA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "DL000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "DM000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "ED000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "FD000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "GB000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "HA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "IE000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "IK000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "IM010"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "IM040"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "JF000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "KA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "KF000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LD000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LD020"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LD030"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LE040"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LE050"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LF000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LF010"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LG010"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LH030"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LJ000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM010"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM020"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM030"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM031"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM032"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM040"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM042"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM051"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LM052"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LMO30"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LN020"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LP000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LP012"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LP013"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "LP030"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "MA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NB000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NB040"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NB070"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NC090"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NE050"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "NH000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "PA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "RA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "TA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "TC000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "TG000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "TH000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "VA000"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "VA010"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "WAH10"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "YA020"
+        }
+    }, 
+    {
+        "pk": null, 
+        "model": "application.organizationalacronym", 
+        "fields": {
+            "name": "ZA000"
+        }
+    }
+]

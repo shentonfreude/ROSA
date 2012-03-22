@@ -1,0 +1,51 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Address"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Phone Number"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Birthplace"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Date of Birth"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "SSN"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Email Address"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "application.privacyinfodata", 
+        "fields": {
+            "name": "Name"
+        }
+    }
+]

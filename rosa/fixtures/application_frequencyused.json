@@ -1,0 +1,30 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.frequencyused", 
+        "fields": {
+            "name": "As Needed"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.frequencyused", 
+        "fields": {
+            "name": "Daily"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.frequencyused", 
+        "fields": {
+            "name": "Monthly"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.frequencyused", 
+        "fields": {
+            "name": "Weekly"
+        }
+    }
+]

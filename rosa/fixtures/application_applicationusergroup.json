@@ -1,0 +1,37 @@
+[
+    {
+        "pk": 1, 
+        "model": "application.applicationusergroup", 
+        "fields": {
+            "name": "Agency-wide"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "application.applicationusergroup", 
+        "fields": {
+            "name": "HQ-wide"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "application.applicationusergroup", 
+        "fields": {
+            "name": "Multiple Org"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "application.applicationusergroup", 
+        "fields": {
+            "name": "Public"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "application.applicationusergroup", 
+        "fields": {
+            "name": "Single Org"
+        }
+    }
+]
