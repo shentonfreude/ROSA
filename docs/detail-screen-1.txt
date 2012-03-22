@@ -1,0 +1,21 @@
+SIMPLE SEARCH
+ADVANCED SEARCH
+
+REPORTS: PDF, Excel, by date range
+
+ <select id="todisplay" name="report_name" onChange="javascript: ShowDate('divRow1','divRow2','divRow3');">
+
+		  	<option value="ApplicationPipeline">Application Pipeline (Abbreviated)</option>
+		  	<option value="ApplicationPipelineExcel">Application Pipeline (Full)</option>
+		  	<option value="COSA">Catalog of Support Applications - Current Production Releases</option>
+		  	<option value="AllCurrentInDevelopment">All Current and In Development Releases by Acronym</option>
+		  	<option value="G_CurrentInDevelopment">Total Current Apps/Web Sites and Releases In Development (core and 10.x)</option>
+		  	<option value="G_TypesCurrentProd">Types of Current Production Applications by Acronym</option>
+
+		  	<option value="G_ProductionWebSite">Production Web Sites by Organization Acronym</option>
+		  	<option value="G_MnthlyAppReleased">Monthly Analysis of Applications Released</option>
+		  	<option value="G_CoreVsNonCore">Software Releases Core vs Non Core</option>
+
+HELP
+
+LOGOUT
