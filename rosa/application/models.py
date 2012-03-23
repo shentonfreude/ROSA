@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db.models import Model, ForeignKey, ManyToManyField
 from django.db.models import BooleanField, CharField, DateField, EmailField, IntegerField, TextField
 
+# TODO: make these key tables UNIQ
+
 class ApplicationType(Model):
     name = CharField(max_length=32, blank=True) #c/s, webapp, web site
     def __unicode__(self):
