@@ -2,3 +2,6 @@
 /include/
 /lib/
 /rosa/db/rosa.sqlite3
+/.DS_Store
+/rosa/.DS_Store
+/rosa/application/.DS_Store

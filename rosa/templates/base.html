@@ -46,12 +46,12 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="{% url home %}">    <i class="icon-white icon-home"></i>      Home</a></li>
-              <li><a href="{% url apps %}"><i class="icon-white icon-list"></i>      Browse</a></li>
-              <li><a href="{% url search %}">  <i class="icon-white icon-search"></i>    Search</a></li>
-              <li><a href="{% url about %}">   <i class="icon-white icon-info-sign"></i> About</a></li>
-              <li><a href="{% url manage %}">  <i class="icon-white icon-cog"></i>       Manage</a></li>
+              <li><a href="{% url list_apps %}"><i class="icon-white icon-list"></i>      Browse</a></li>
+              <li><a href="#">  <i class="icon-white icon-search"></i>    Search</a></li>
+              <li><a href="#">   <i class="icon-white icon-info-sign"></i> About</a></li>
+              <li><a href="#">  <i class="icon-white icon-cog"></i>       Manage</a></li>
               <li><a href="#contact">          <i class="icon-white icon-envelope"></i>  Contact</a></li>
-              <li><a href="{% url exit %}">    <i class="icon-white icon-off"></i>       Exit</a></li>
+              <li><a href="#exit">    <i class="icon-white icon-off"></i>       Exit</a></li>
             </ul>
             <p class="navbar-text pull-right"> <i class="icon-white icon-user"></i>      Logged in as <a href="#">username</a></p>
           </div><!--/.nav-collapse -->
@@ -61,23 +61,23 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               {% block leftnav %}
               <li class="nav-header">NASA HQ</li>
-              <li><a href="#">Thing1/a></li>
-              <li><a href="#">Thing2/a></li>
+              <li><a href="#">Thing1</a></li>
+              <li><a href="#">Thing2</a></li>
               <li class="nav-header">NASA</li>
-              <li><a href="#">Thing1/a></li>
-              <li><a href="#">Thing2/a></li>
+              <li><a href="#">Thing1</a></li>
+              <li><a href="#">Thing2</a></li>
               {% endblock %} {# leftnav #}
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
 
 
-        <div class="span9">
+        <div class="span10">
           {% block content %}ADD YOUR BLOCK CONTENT{% endblock %}
         </div><!--/span-->
 

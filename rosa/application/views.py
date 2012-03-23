@@ -20,6 +20,29 @@ from csv import DictReader
 from models import Application, Version, OrganizationalAcronym, TaskOrder, ApplicationType, SoftwareClass, ReleaseStatus
 from models import InformationSensitivity, AuthenticationMethod, TriageLevel, ApplicationUserGroup, FrequencyUsed
 
+def list_apps(request):
+    return render_to_response('list_apps.html',
+                              {'apps': Application.objects.all().order_by('acronym'),
+                               },
+                              context_instance=RequestContext(request));
+
+def list_app_versions(request, object_id):
+    # Bug: we have multiple versions of each App on import
+    # so we can't use our pk, we have to use the acronym for now
+    #objs = Version.objects.filter(application=object_id) # FK
+    app = Application.objects.get(pk=object_id)
+    objs = Version.objects.filter(application__acronym=app.acronym) # FK
+    return render_to_response('list_app_versions.html',
+                              {'objs': objs,
+                               },
+                              context_instance=RequestContext(request));
+
+def version_details(request, object_id):
+    version= Version.objects.get(pk=object_id)
+    return render_to_response('version_details.html',
+                              {'version': version,
+                               },
+                              context_instance=RequestContext(request));
 
 
 def get_fk(model, name):
@@ -67,6 +90,8 @@ def isodate(slashdate):
 # 'b5',
 # 'version_status']
 
+
+### BUG: we're creating multiple versions of an App
 
 def csvimport(request):
     csvfile = open("rosa-app-pipeline-full.csv")
