@@ -1,4 +1,4 @@
-release_date,version_number,b1,application.acronym,service_request_numbers,nasa_owner_office_id,b2,nasa_owner_name,version_change_description,b3,contract_task_order_numbers,b4,application_type,software_class,application.name,architecture_type,b5,version_status
+release_date,version_number,b1,application.acronym,service_request_numbers,nasa_owner_office_id,b2,nasa_requester,version_change_description,b3,contract_task_order_numbers,b4,application_type,software_class,application.name,architecture_type,b5,version_status
 ,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,

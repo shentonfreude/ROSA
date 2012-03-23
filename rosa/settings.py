@@ -1,5 +1,8 @@
 import os 
 
+DATE_INPUT_FORMATS = ('%m/%d/%Y')
+#USE_L10N=True
+
 PROJECT_PATH = os.path.abspath(os.path.split(__file__)[0])
 # Django settings for rosa project.
 

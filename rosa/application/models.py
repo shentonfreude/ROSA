@@ -117,7 +117,7 @@ class Version(Model):
     # Security/Compliance
     application_type = ForeignKey(ApplicationType, blank=True, null=True, related_name="application_type")
     fips_information_category = ForeignKey(InformationCategory, blank=True, null=True)
-    information_sensitivity = ForeignKey(InformationSensitivity, blank=True)
+    information_sensitivity = ForeignKey(InformationSensitivity, blank=True, null=True) # add Nullable needed?
     authentication_type = ForeignKey(AuthenticationMethod, blank=True)
     privacy_info_indicator = BooleanField(blank=True)
     privacy_info_data_types = ManyToManyField(PrivacyInfoData, blank=True)
@@ -127,7 +127,7 @@ class Version(Model):
     # Organizational/Support Team
     nasa_owner_organization_name = CharField(max_length=128, blank=True)
     nasa_owner_office_id = ForeignKey(OrganizationalAcronym)
-    nasa_requestor = CharField(max_length=128)
+    nasa_requester = CharField(max_length=128)
     contract_task_order_numbers = ManyToManyField(TaskOrder, blank=True)
     odin_triage_level = ForeignKey(TriageLevel, blank=True)
     branch_manager_name = CharField(max_length=128, blank=True)
@@ -137,7 +137,7 @@ class Version(Model):
     # Usage/Frequency
     user_groups = ForeignKey(ApplicationUserGroup, blank=True)
     frequency_used = ForeignKey(FrequencyUsed, blank=True)
-    number_of_users = IntegerField(blank=True)
+    number_of_users = IntegerField(blank=True, null=True) # new null
     # Architecture
     architecture_type = ForeignKey(ApplicationType, blank=True) # WRONG, this dupes application_type above?
     url_link = CharField(max_length=128, blank=True)
