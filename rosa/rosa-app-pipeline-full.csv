@@ -1,0 +1,314 @@
+release_date,version_number,b1,application.acronym,service_request_numbers,nasa_owner_office_id,b2,nasa_owner_name,version_change_description,b3,contract_task_order_numbers,b4,application_type,software_class,application.name,architecture_type,b5,version_status
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/12/2012,5.3.1,,FOCUS,2012-0001655,BA000,,Brandy Henson,The customer is requesting a quick update with code change to allow vertical check of fund availability when saving and submitting transaction request in IEP and FD.,,10.11,,"Finance, Acct, Budget",F,Financial On-Line Consolidated User System,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/12/2012,1.7,,RAPTOR,ESD tkt # INC000000527581,DL000,,Ruth Netting,"Application: RAPTOR
+Subject: RAPTOR application update (version 1.6)
+Technical POC: Philip Chang
+Description:
+*    Ticket #294: Provide different names in the header of Excel document
+*    Ticket #298: Implement HQ read only role (report access only)
+*    Ticket #304: Fix ?System. OutOfMemoryException? error when extremely large report data are 
+generated.
+*    Ticket #305: Change MdM template format",,10.08,,"Finance, Acct, Budget",F,Research and Analysis Program Tracking of Resources,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/19/2012,3.1,,FHDS,2011-0001410,LM031,,MALICHA DAY,"1) Activate conference customer service survey
+2) Modify format for customer service surveys to make more user friendly (results)
+3) Add event planning guide link to conference confirmation e-mail
+4) Reduce number of e-mails received once FHDS 
+ticket is submitted
+5) Show overall average of scores and not just individual averages
+6) Allow user to make changes to conference requests up to 72 hours in advance.  
+7) Provide ability to view conference schedule without having to create a conference request.  
+8) Add the ability to track start and completion of request entered to better determine metrics (this can be further discussed in meeting)",,10.86,,General Admin,G,Facilities Help Desk System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/19/2012,3.4.1,,HQLI-1,2011-2001648,LM052,,John Brett,"The HQLI-1 customer, John Brett identified two 
+issues in the system: 
+One: There is a problem with the Line Item Query screen:    Notice a specific project is selected and filtered on ADJ GL and Procurement  (SS1).  When you select the line it  takes you to the GL process, not the ADJ GL. (SS2).     When you select  Back to HQLI List  (SS2), it takes you all the way out (SS3).  It should take you to SS1.
+Two:  Running the ?By Project?  Guideline report in Excel gives the  ?By Line? Item version instead.",,10.53,,"Finance, Acct, Budget",G,Headquarters Line Item Database,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/24/2012,5.9.1,,MBPD,2012-2001660,LP012,,Diane Frazier,"Masterbuy Plan Database (MBPD) System has an issue where the customer is receiving an error when trying to delete or de-activate old users through the System Administration module.  In addition, when a change is made to a record, the e-mail and pop-up reference the person who last changed the record rather than the one who made the change now.",,10.01,,Property & Procurement,F,Master Buy Plan Database,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+01/26/2012,4.8,,DCMS,2012-0001657,YA020,,Donald King,Provide changes where appropriate based on the information contained in the Federal Register to reconcile data for the No Fear Act quarterly posting.,,10.01,,General Admin,F,Discrimination Complaints Management System,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+02/02/2012,1.9,,GOS,Ticket INC000000520310,NH000,,Margaret P Smith,UPDATE THE GOS SYSTEM WITH NEW SPACE X BUTTON,,10.01,,General Admin,F,Guest Operations Database System,C/S,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+02/09/2012,5.4,,FOCUS,2011-0001641,BA000,,Brandy Henson,"""SYSTEM ANALYSIS (Phasing Plans PMT Export) - Provide the ability to export multiple projects with a separate workbook (or zip file) for each project 
+ADMINISTRATION MODULE 
+Funds Management (FM) - Modify FM history pages to display AUID instead of user name 
+Online Help - Modify HELP icon to call user guide.
+All Module - Simplify working for error messages received during a business rule violation.""",,10.11,,"Finance, Acct, Budget",F,Financial On-Line Consolidated User System,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+02/21/2012,3.4.2,,HQLI-1,2012-2001690,LM052,,John Brett,An error occurs when trying to generate HQLI-1 Slash Reports.  The table ?reportType? that allows reports to be generated by project view or line item view needs to be created in production.,,10.53,,"Finance, Acct, Budget",G,Headquarters Line Item Database,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+02/23/2012,2.5.3,,PAVE,2012-2001663,LM040,,Rhonda Horton-taylor,Update the scheduled task that pulls the emails from HQTS.,,10.01,,General Admin,F,Project Announcement Visibility Effort,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/01/2012,2.7.2,,NCTS,2012-2001677,LG010,,Tangelia Campbell,"Update NCTS with one bug fix and two OPM
+requirement changes:
+1. Enhance the requirements from OPM position 85 -93 on both refresh and incremental report.
+2. Add additional filters on the Refresh and Incremental Report to adhere to new OPM requirements 
+3. Clean-up the NCTS Database as there are
+duplicate SSN number",,10.01,,General Admin,F,NASA Clearance Tracking System,Web App,,Prior Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/01/2012,1.5,,SIERA,2011-0001521,TG000,,Leslie Cahoon,"Upgrade from Crystal Enterprise XI 2.4 to SAP
+Business Objects Pro ENTERPRISE XI 3.1A.  Crystal Enterprise XI 2.4, which is currently in production, is no longer supported by the vendor.  An upgrade to SAP Business Objects Pro ENTERPRISE XI 3.1A for continued vendor support.",,10.01,,General Admin,G,International Agreements Database System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,CDB-GIS,2011-0001614,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's Congressional Database Geographic Information System.,,10.08,,General Admin,F,Congressional Database Geographic Information System (CDB-GIS) for Science Works,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,HRPS,2011-0001615,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's HRPS application.,,10.08,,Support,F,Human Resources and Personnel System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,MHBook,2011-0001616,DM000,,Ruth A Netting,eAuthenticate/Access Launchpad enable SMD's Management Handbook application.,,10.08,,GENERAL ADMIN,F,SMD Management Handbook,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,MPR,2011-0001619,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's Monthly Program Review application.,,10.08,,GENERAL ADMIN,F,SMD Monthly Program Review,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,NRC ATS,2011-0001620,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's NRC Activity Tracking System.,,10.08,,GENERAL ADMIN,F,National Research Council Activity Tracking System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,RAPTOR,2011-0001613,DL000,,Ruth Netting,eAuthenticate/Access Launchpad enable RAPTOR application.,,10.08,,"Finance, Acct, Budget",F,Research and Analysis Program Tracking of Resources,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/03/2012,2.0,,WRP,2011-0001618,DM000,,Ruth A Netting,eAuthenticate/Access Launchpad enable SMD's Weekly Reports application.,,10.08,,Support,G,ScienceWorks: Weekly Reporting System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/06/2012,3.4.3,,HQLI-1,2012-2001701,LM052,,John Brett,HQLI -1 is importing data from the REQ process into the RECC process instead of from the ADJ Guideline process,,10.53,,"Finance, Acct, Budget",G,Headquarters Line Item Database,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/08/2012,4.9,,DCMS,2011-0001521,YA020,,Leslie Cahoon,"Upgrade from Crystal Enterprise XI 2.4 to SAP
+Business Objects Pro ENTERPRISE XI 3.1A",,10.01,,General Admin,F,Discrimination Complaints Management System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/08/2012,2.8,,NCTS,2011-0001521,LG010,,Leslie Cahoon,"Upgrade from Crystal Enterprise XI 2.4 to SAP
+Business Objects Pro ENTERPRISE XI 3.1A.  Crystal Enterprise XI 2.4, which is currently in production, is no longer supported by the vendor.  An upgrade to SAP Business Objects Pro ENTERPRISE XI 3.1A for continued vendor support.",,10.01,,General Admin,F,NASA Clearance Tracking System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/09/2012,6.0,,FOCUS,2011-0001452,BA000,,Brandy Henson,Make FOCUS Application accessible via Launch Pad. No other development work will be done under this service request.,,10.11,,"Finance, Acct, Budget",F,Financial On-Line Consolidated User System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/15/2012,3.0.3,,HPSS,2011-2001639,LM032,,Antoinette Ford-Miller,"Error messsge when trying to access ""manage facility"". Error involves accessing a page with a URL variable ""action"" that is set to no value (""action="").",,10.01,,General Admin,G,Headquarters Personnel Security System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/15/2012,2.0,,MDB,2011-0001621,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's Milestone Database.,,10.08,,General Admin,F,Milestone Database for Science Mission Directorate,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/15/2012,2.0,,RMS,2011-0001617,DM000,,Ruth A Netting,eAuthenticate/Access Launchpad enable SMD's Requirements Management System.,,10.08,,General Admin,F,Requirements Management System,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/15/2012,2.0,,SPIAD,2011-0001622,DM000,,Ruth Netting,eAuthenticate/Access Launchpad enable SMD's Science Pending International Agreements Database.,,10.08,,GENERAL ADMIN,G,Science Pending International Agreements Database,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/15/2012,1.0,,Website-Innovate,2011-0001591,LM020,,Brady W Decker,,,10.01,,N/A,F,Innovate NASA Website,Web App,,Current Version
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/29/2012,2.0,,BASO-CMS,2012-0001676,LM051,,KATHRYN KARMAZIN,Migrate BASO CMS to ColdFusion 9 and place in Production before the access launchpad changes,,10.53,,General Admin,G,Business & Administrative System Office Content Management System.,Web App,,In Development
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/29/2012,3.2,,FHDS,INC000000544345,LM031,,MALICHA DAY,"1) Activate conference customer service survey
+2) Modify format for customer service surveys to make more user friendly (results)
+3) Add event planning guide link to conference confirmation e-mail
+4) Reduce number of e-mails received once FHDS 
+ticket is submitted
+5) Show overall average of scores and not just individual averages
+6) Allow user to make changes to conference requests up to 72 hours in advance.  
+7) Provide ability to view conference schedule without having to create a conference request.  
+8) Add the ability to track start and completion of request entered to better determine metrics (this can be further discussed in meeting)",,10.86,,General Admin,G,Facilities Help Desk System,Web App,,In Development
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/29/2012,1.2,,HQSOPSFF,INC000000556421,LM000,,Marguerite Team,,,10.01,,PUBLIC,G,NASA HQ Operations Customer Service Feedback Forms,Web App,,In Development
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+03/29/2012,2.0,,HQeD,2011-0001534,LM020,,Micheal Crnkovic,Implement Access Launchpad on the HQeD application.,,10.02,,General Admin,G,NASA HQ On-Line Phonebook,Web App,,In Development
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
