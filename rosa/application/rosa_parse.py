@@ -7,8 +7,14 @@
 # ROSA XML doesn't use attributes on tags except for the top-level <rosa/>
 # Next level in is <application/> and its tags for each app
 # (NOT wrapped in an <applications> tag).
-
-from ElementTree import cElementTree as ET
+#
+# 2012-03-23 My password no longer works and I cannot script RSA auth.
+# After manual RSA auth, grab from
+# https://merope.hq.nasa.gov/rosa/ws/hdmsrosa/all/main/RosaExportXml
+# It's 21MB at present.
+# xml.parsers.expat.ExpatError: not well-formed (invalid token): line 334227, column 69
+# Due to embedded ^K ?
+from elementtree import ElementTree as ET
 import urllib
 import httplib2
 
@@ -63,7 +69,7 @@ class Rosa(object):
     def file_get_xml(self, filename='rosaExportXML.xml'):
         """Read the XML from the given filename, save as .xml_text for parsing.
         """
-        self.xml_text = file(filename).read()
+        self.xml_text = file(filename).read().replace(chr(11), '') # ^K noise
 
     def parse_xml(self):
         self.xml = ET.fromstring(self.xml_text)
@@ -74,9 +80,10 @@ class Rosa(object):
             napps += 1
             if napps > max_apps:
                 raise SystemExit, "Ending after %d elements" % max_apps
-            text = element.text
+            #import pdb; pdb.set_trace()
+            text = app.text
             text = text and len(text) > 40 and text[:40] + "..." or text
-            print "tag=%s text=%s" % (element.tag, text)
+            print "tag=%s text=%s" % (app.tag, text)
             appdata = app.getchildren()
             for elem in appdata:
                 print "\t%s = %s" % (elem.tag, elem.text)
@@ -217,16 +224,19 @@ class Rosa(object):
 
 def main():
     r = Rosa()
-    #r.file_get_xml('/tmp/rosa-in-progress.xml')
-    r.http_get_xml()
+    r.file_get_xml('/Users/cshenton/Documents/rosaExportXml.xml')
+    #r.http_get_xml()
+    print r.xml_text[:1000]
+
     r.parse_xml()
 
     #dirty = ET.ElementTree(r.xml)
     #dirty.write(r.DIRTY_FILE_PATH)
-    #r.remove_basis_crap()
+    r.remove_basis_crap()
     #clean = ET.ElementTree(r.xml)       # I hope this is different now
     #clean.write(r.CLEAN_FILE_PATH)
 
+    r.show_some_apps()
     #r.get_application_values()
     #r.get_schema_rnc()
 
