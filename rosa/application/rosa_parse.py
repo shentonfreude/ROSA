@@ -17,7 +17,7 @@
 from elementtree import ElementTree as ET
 import urllib
 import httplib2
-
+import json
 
 class Rosa(object):
     def __init__(self):
@@ -92,7 +92,25 @@ class Rosa(object):
                 else:
                     print "\t%s = %s" % (elem.tag, elem.text)
                 # some of these have subelements, crazy ones.
-        
+
+    def get_apps(self):
+        apps = []
+        for app_elem in self.xml.getiterator('application'):
+            app = {}
+            for elem in app_elem.getchildren():
+                grandchildren = elem.getchildren()
+                if grandchildren:
+                    val = [gc.text for gc in grandchildren]
+                else:
+                    val = elem.text
+                app[elem.tag] = val
+            apps.append(app)
+        self.apps = apps
+
+    def write_json_apps(self):
+        with open("/tmp/apps.json", 'w') as jsonf:
+            jsonf.write(json.dumps(self.apps, sort_keys=True, indent=4))
+                        
     def get_application_tags(self):
         """Tally all the tags across all applications, there's strange stuff.
         """
@@ -228,9 +246,9 @@ class Rosa(object):
 
 def main():
     r = Rosa()
-    r.file_get_xml('/Users/cshenton/Documents/rosaExportXml.xml')
+    r.file_get_xml('/Users/cshenton/Documents/rosaExportXmlSmall.xml')
     #r.http_get_xml()
-    print r.xml_text[:1000]
+    print r.xml_text[:100]
 
     r.parse_xml()
 
@@ -241,8 +259,10 @@ def main():
     #clean.write(r.CLEAN_FILE_PATH)
 
     #r.show_some_apps()
-    r.get_application_values()
+    #r.get_application_values()
     #r.get_schema_rnc()
+    r.get_apps()
+    r.write_json_apps()
 
 
 if __name__ == '__main__':
