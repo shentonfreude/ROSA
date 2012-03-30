@@ -4,6 +4,7 @@ from django.db.models import NullBooleanField, CharField, DateField, EmailField,
 
 # TODO: make these key tables UNIQ
 
+# TODO: we shouldn't allow Null or Empty names?
 
 class AppStatus(Model):              # M2M
     name = CharField(max_length=64, blank=True) ##Archived, Cancelled, Current Version, ...
@@ -42,6 +43,11 @@ class BrowserSupport(Model):       # M2M
 
 class CmResubmitDate(Model):       # M2M
     name = DateField(blank=True, null=True) #
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+class DbmsName(Model):       # M2M
+    name = CharField(max_length=64, blank=True) #
     def __unicode__(self):
         return u'%s' % (self.name)
 
@@ -101,7 +107,7 @@ class Section2810Compliant(Model): # FK
         return u'%s' % (self.name)
 
 class SecurityItcdOwner(Model):    # FK
-    name = CharField(max_length=64, blank=True) ## ['ANDREW BONCEK', 'ANDY BONCEK', 'Andrew Boncek',...]
+    name = CharField(max_length=64, blank=True, null=True) ## ['ANDREW BONCEK', 'ANDY BONCEK', 'Andrew Boncek',...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
@@ -188,6 +194,32 @@ UNUSED_FIELDS = (               # Never populated in Rosa export
     'migration_id',         # 2558 are always '1'
     'orgcode',              # all 2558 are 'A'
     'sw_tools',             # all empty but 1 'Dreamweaver'
+    # Other crap fields we found on insert
+    'combined_search',
+    'userlevel',
+    'migration_id',
+    'gots_agency_info',
+    'doclevel',
+    'software_category_all',
+    'location_all',
+    'filename',
+    'version_version_number',
+    'acronym_inter_direction_all',
+    'sr_number_all',
+    'group_code',
+    'bia_category_all',
+    'requests',
+    'cm_entered_date',
+    'app_type_all',
+    'entered_date',
+    'access_history',
+    're_entered_date',
+    'syskey',
+    'architecture_type_all',
+    'doc_number',
+    'server_db_name_all',
+    'icon',
+    'version_highest_version_flag',
     )
 
 # We're not having separate Application and Version objects:
@@ -201,7 +233,7 @@ class Application(Model):
     acronym_interface           = CharField(max_length=128, blank=True, null=True) # TOO MANY: 325
     acronymrelease              = CharField(max_length=128, blank=True, null=True) # DUPES acronym + release "PAVE 2.5.3"
     app_name                    = CharField(max_length=128) # Providing Advanced Visibilty Effort
-    app_status                  = ManyToManyField(AppStatus, blank=True, null=True) #Archived, Cancelled, Current Version, ... HOW CAN THIS BE M2M?
+    app_status                  = ManyToManyField(AppStatus, blank=True, null=True) #Archived, Cancelled, Current Version, ... HOW CAN THIS BE M2M???
     app_status_comments         = CharField(max_length=128, blank=True, null=True) # TOO MANY: 413
     app_type                    = ManyToManyField(AppType, blank=True, null=True) #Application, General Support System, Major Application, ...
     app_usage                   = ManyToManyField(AppUsage, blank=True, null=True) #Agency-Wide, HQ-Wide, Multiple Org, ...
@@ -212,9 +244,9 @@ class Application(Model):
     awrs_indicator              = NullBooleanField(blank=True, null=True)
     bia_category                = ForeignKey(BiaCategory, blank=True, null=True) # ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
     browser_support             = ManyToManyField(BrowserSupport, blank=True, null=True) #IE, MOZILLA, Mozilla, STANDARD WEB BROWSER
-    cm_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 2511
-    cm_resubmit_date            = CharField(max_length=128, blank=True, null=True) # TOO MANY: 297
-    dbms_name                   = ManyToManyField(CmResubmitDate, blank=True, null=True) #TOO MANY=104
+    cm_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 2511 -- TODO TimeField?
+    cm_resubmit_date            = ManyToManyField(CmResubmitDate, blank=True, null=True) # TOO MANY: 297  -- TODO DateField
+    dbms_name                   = ManyToManyField(DbmsName, blank=True, null=True) #TOO MANY=104
     description                 = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1162
     dev_name_alternate          = CharField(max_length=128, blank=True, null=True) # TOO MANY: 229
     dev_name_primary            = CharField(max_length=128, blank=True, null=True) # TOO MANY: 253
@@ -245,7 +277,7 @@ class Application(Model):
     re_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1269
     release                     = CharField(max_length=128) # 2.5.3
     release_change_description  = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1684
-    release_date                = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1457
+    release_date                = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1457 TODO DateField
     release_notes               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 220
     release_status              = ForeignKey(ReleaseStatus, blank=True, null=True) # ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
     sec_plan_number             = ForeignKey(SecPlanNumber, blank=True, null=True) # [' 20090812', '0A-801-M-NHQ-0001', '20090812',...]

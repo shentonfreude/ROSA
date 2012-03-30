@@ -5,9 +5,17 @@
 # export DJANGO_SETTINGS_MODULE=settings
 # ./rosa_import.py 
 
+import logging
 import json
+
+from django.core.exceptions import ValidationError
+from django.db.models.fields import FieldDoesNotExist
+from django.db import models
+
 from application.models import Application
 from application.models import UNUSED_FIELDS
+
+logging.basicConfig(level=logging.INFO)
 
 #import rosa_parse
 
@@ -23,6 +31,12 @@ def get_fk(model, name):
         item = model(name=name)
         item.save()
         logging.info("get_fk model=%s name=%s : CREATED item=%s" % (model, name, item))
+    # except ValidationError, e:
+    #     logging.error("VALIDATION get_fk model=%s name=%s" % (model, name))
+    #     #import pdb; pdb.set_trace()
+    #     # cm_resubmit_date like 20120329
+    #     # (datefieldobj, model, direct, m2m) = resubdate[0].rel.to._meta.get_field_by_name('name')
+    #     # look on that for auto_now_add ? FUGLY
     return item
 
 def isodate(slashdate):
@@ -43,8 +57,6 @@ def get_apps_json(json_path):
 json_apps = get_apps_json("/Users/cshenton/Documents/rosaExportSmall.json")
 print "len json_apps=", len(json_apps)
 
-from django.db.models.fields import FieldDoesNotExist
-from django.db import models
 model = models.get_model('application', 'Application')
 
 for json_app in json_apps:
@@ -52,38 +64,33 @@ for json_app in json_apps:
     app.save()                  # save for M2M
     print "app acronym=%s release=%s" % (json_app['acronym'], json_app['release'])
     for k,v in json_app.items():
-        #print "k=%s v=%s" % (k,v)
         if k in UNUSED_FIELDS:
             continue
+        if not v:
+            continue            # don't bother storing emptiness TODO: Unspecified UNASSIGNE are also empty
         try:
             (field, fmodel, direct, m2m) = dep_field = model._meta.get_field_by_name(k)
         except FieldDoesNotExist, e:
-            print "ERR", e
+            logging.warning("ERR NOFIELD: %s", e)
         if not field.rel:       # directly attached
             setattr(app, k, v)
-        # except ValueError, e:
-        #     print "ERR", e
-            
-    app.save()                  # save for M2M
-
-# version = Version(application=app,
-#                   release_date=isodate(row['release_date']),
-#                   version_number=row['version_number'],
-#                   service_request_numbers=row['service_request_numbers'],
-#                   nasa_owner_office_id=nasa_owner_office_id,
-#                   nasa_requester=row['nasa_requester'],
-#                   version_change_description=row['version_change_description'],
-#                   application_type=application_type,
-#                   software_class=software_class,
-#                   version_status=version_status,
-#                   # These may not be Null, why not?
-#                   information_sensitivity = get_fk(InformationSensitivity, 'Not In Rosa Report'),
-#                   authentication_type     = get_fk(AuthenticationMethod,   'Not in Rosa Report'),
-#                   odin_triage_level       = get_fk(TriageLevel,            'Not in Rosa Report'),
-#                   user_groups             = get_fk(ApplicationUserGroup,   'Not in Rosa Report'),
-#                   frequency_used          = get_fk(FrequencyUsed,          'Not in Rosa Report'),
-#                   architecture_type       = get_fk(ApplicationType,        'Not in Rosa Report'), 
-#                   )
-# version.save()
-
-
+        else:
+            forn_model =  field.rel.to
+            logging.debug("k=%s forn_model=%s" % (k, forn_model))
+            if not isinstance(v, list):
+                try:
+                    setattr(app, k, get_fk(forn_model, v))
+                except TypeError, e:
+                    logging.error("ERR SETATTR", e)
+            else:
+                try:
+                    vlist = [get_fk(forn_model, vitem) for vitem in v if vitem]
+                except ValidationError, e:
+                    logging.error("ERR VALIDATION: %s", e) # bad date format??
+                    continue
+                try:
+                    setattr(app, k, vlist)
+                except TypeError, e:
+                    logging.error("ERR VLIST: %s", e)
+                    import pdb; pdb.set_trace()
+    app.save()                # Is it not saving the M2M connections?
