@@ -17,8 +17,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 from csv import DictReader
-from models import Application, Version, OrganizationalAcronym, TaskOrder, ApplicationType, SoftwareClass, ReleaseStatus
-from models import InformationSensitivity, AuthenticationMethod, TriageLevel, ApplicationUserGroup, FrequencyUsed
+from models import Application
+#, Version, OrganizationalAcronym, TaskOrder, ApplicationType, SoftwareClass, ReleaseStatus
+#from models import InformationSensitivity, AuthenticationMethod, TriageLevel, ApplicationUserGroup, FrequencyUsed
 
 def list_apps(request):
     return render_to_response('list_apps.html',
@@ -26,23 +27,23 @@ def list_apps(request):
                                },
                               context_instance=RequestContext(request));
 
-def list_app_versions(request, object_id):
-    # Bug: we have multiple versions of each App on import
-    # so we can't use our pk, we have to use the acronym for now
-    #objs = Version.objects.filter(application=object_id) # FK
-    app = Application.objects.get(pk=object_id)
-    objs = Version.objects.filter(application__acronym=app.acronym) # FK
-    return render_to_response('list_app_versions.html',
-                              {'objs': objs,
-                               },
-                              context_instance=RequestContext(request));
+# def list_app_versions(request, object_id):
+#     # Bug: we have multiple versions of each App on import
+#     # so we can't use our pk, we have to use the acronym for now
+#     #objs = Version.objects.filter(application=object_id) # FK
+#     app = Application.objects.get(pk=object_id)
+#     objs = Version.objects.filter(application__acronym=app.acronym) # FK
+#     return render_to_response('list_app_versions.html',
+#                               {'objs': objs,
+#                                },
+#                               context_instance=RequestContext(request));
 
-def version_details(request, object_id):
-    version= Version.objects.get(pk=object_id)
-    return render_to_response('version_details.html',
-                              {'version': version,
-                               },
-                              context_instance=RequestContext(request));
+# def version_details(request, object_id):
+#     version= Version.objects.get(pk=object_id)
+#     return render_to_response('version_details.html',
+#                               {'version': version,
+#                                },
+#                               context_instance=RequestContext(request));
 
 
 def get_fk(model, name):
@@ -93,54 +94,54 @@ def isodate(slashdate):
 
 ### BUG: we're creating multiple versions of an App
 
-def csvimport(request):
-    csvfile = open("rosa-app-pipeline-full.csv")
-    reader = DictReader(csvfile)
-    logging.info("fieldnames=%s" % reader.fieldnames)
+# def csvimport(request):
+#     csvfile = open("rosa-app-pipeline-full.csv")
+#     reader = DictReader(csvfile)
+#     logging.info("fieldnames=%s" % reader.fieldnames)
 
-    for row in reader:
-        if not row['release_date']:
-            continue
-        logging.info("%(release_date)s %(application.acronym)s %(version_number)s %(nasa_owner_office_id)s %(nasa_requester)s %(contract_task_order_numbers)s %(application_type)s %(architecture_type)s %(version_status)s" % row)
+#     for row in reader:
+#         if not row['release_date']:
+#             continue
+#         logging.info("%(release_date)s %(application.acronym)s %(version_number)s %(nasa_owner_office_id)s %(nasa_requester)s %(contract_task_order_numbers)s %(application_type)s %(architecture_type)s %(version_status)s" % row)
 
-        app = Application.objects.filter(name=row['application.acronym'])
-        if not app:
-            app = Application(acronym=row['application.acronym'], name=row['application.name'])
-            app.save()
+#         app = Application.objects.filter(name=row['application.acronym'])
+#         if not app:
+#             app = Application(acronym=row['application.acronym'], name=row['application.name'])
+#             app.save()
 
-        nasa_owner_office_id              = get_fk(OrganizationalAcronym, row['nasa_owner_office_id'])
-        contract_task_order_numbers       = get_fk(TaskOrder,             row['contract_task_order_numbers'])
-        application_type                  = get_fk(ApplicationType,       row['application_type'])
-        software_class                    = get_fk(SoftwareClass,         row['software_class'])
-        version_status                    = get_fk(ReleaseStatus,         row['version_status'])
+#         nasa_owner_office_id              = get_fk(OrganizationalAcronym, row['nasa_owner_office_id'])
+#         contract_task_order_numbers       = get_fk(TaskOrder,             row['contract_task_order_numbers'])
+#         application_type                  = get_fk(ApplicationType,       row['application_type'])
+#         software_class                    = get_fk(SoftwareClass,         row['software_class'])
+#         version_status                    = get_fk(ReleaseStatus,         row['version_status'])
 
-        # check out Modelname.objects.create() call instead?
+#         # check out Modelname.objects.create() call instead?
 
-        version = Version(application=app,
-                          release_date=isodate(row['release_date']),
-                          version_number=row['version_number'],
-                          service_request_numbers=row['service_request_numbers'],
-                          nasa_owner_office_id=nasa_owner_office_id,
-                          nasa_requester=row['nasa_requester'],
-                          version_change_description=row['version_change_description'],
-                          application_type=application_type,
-                          software_class=software_class,
-                          version_status=version_status,
-                          # These may not be Null, why not?
-                          information_sensitivity = get_fk(InformationSensitivity, 'Not In Rosa Report'),
-                          authentication_type     = get_fk(AuthenticationMethod,   'Not in Rosa Report'),
-                          odin_triage_level       = get_fk(TriageLevel,            'Not in Rosa Report'),
-                          user_groups             = get_fk(ApplicationUserGroup,   'Not in Rosa Report'),
-                          frequency_used          = get_fk(FrequencyUsed,          'Not in Rosa Report'),
-                          architecture_type       = get_fk(ApplicationType,        'Not in Rosa Report'), 
-                          )
-        # Also not in Rosa Report:
-        # * primary deveoper
-        # Invalid keyword argument:
-  #contract_task_order_numbers=contract_task_order_numbers,
+#         version = Version(application=app,
+#                           release_date=isodate(row['release_date']),
+#                           version_number=row['version_number'],
+#                           service_request_numbers=row['service_request_numbers'],
+#                           nasa_owner_office_id=nasa_owner_office_id,
+#                           nasa_requester=row['nasa_requester'],
+#                           version_change_description=row['version_change_description'],
+#                           application_type=application_type,
+#                           software_class=software_class,
+#                           version_status=version_status,
+#                           # These may not be Null, why not?
+#                           information_sensitivity = get_fk(InformationSensitivity, 'Not In Rosa Report'),
+#                           authentication_type     = get_fk(AuthenticationMethod,   'Not in Rosa Report'),
+#                           odin_triage_level       = get_fk(TriageLevel,            'Not in Rosa Report'),
+#                           user_groups             = get_fk(ApplicationUserGroup,   'Not in Rosa Report'),
+#                           frequency_used          = get_fk(FrequencyUsed,          'Not in Rosa Report'),
+#                           architecture_type       = get_fk(ApplicationType,        'Not in Rosa Report'), 
+#                           )
+#         # Also not in Rosa Report:
+#         # * primary deveoper
+#         # Invalid keyword argument:
+#   #contract_task_order_numbers=contract_task_order_numbers,
 
-        version.save()
-    return HttpResponseRedirect(reverse('home'))
+#         version.save()
+#     return HttpResponseRedirect(reverse('home'))
 
 
 
