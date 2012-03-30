@@ -83,10 +83,14 @@ class Rosa(object):
             #import pdb; pdb.set_trace()
             text = app.text
             text = text and len(text) > 40 and text[:40] + "..." or text
-            print "tag=%s text=%s" % (app.tag, text)
+            print "APP TAG=%s TEXT=%s" % (app.tag, text) # Nothing here
             appdata = app.getchildren()
             for elem in appdata:
-                print "\t%s = %s" % (elem.tag, elem.text)
+                grandchildren = elem.getchildren()
+                if grandchildren:
+                    print "\t%s = %s GRANDCHILDREN=%s" % (elem.tag, elem.text.strip(), [gc.text for gc in grandchildren])
+                else:
+                    print "\t%s = %s" % (elem.tag, elem.text)
                 # some of these have subelements, crazy ones.
         
     def get_application_tags(self):
@@ -119,7 +123,7 @@ class Rosa(object):
                     kid_vals = self.xml.findall("./application/%s/%s" % (tn,kt))
                     kid_vals = self._uniq([k.text for k in kid_vals])
                     if len(kid_vals) > self.TOO_MANY_VALUES:
-                        print "%s :       VAL=%s" % (" "*len(tn), "TOO MAN=%s" % len(kid_vals))
+                        print "%s :       VAL=%s" % (" "*len(tn), "TOO MANY=%s" % len(kid_vals))
                     else:
                         for v in kid_vals:
                             print "%s :       VAL=%s" % (" "*len(tn), v)
@@ -236,10 +240,27 @@ def main():
     #clean = ET.ElementTree(r.xml)       # I hope this is different now
     #clean.write(r.CLEAN_FILE_PATH)
 
-    r.show_some_apps()
-    #r.get_application_values()
+    #r.show_some_apps()
+    r.get_application_values()
     #r.get_schema_rnc()
 
 
 if __name__ == '__main__':
     main()
+
+# Attrs With Children:          Child Name                      Example
+# app_type                      type_of_application		Application
+# app_usage                     usage_of_app_description       	Single Org
+# app_status                    status_of_app                   Prior Version
+# support_status                support_status_instance		Custom
+# location                      location_of_app                 Unassigned
+# server_db_name                server_db_instance_name         Unassigned
+# software_category             category_of_software		D
+# sr_class                      sr_class_instance		Unassigned
+# sw_language                   sw_language_name		ColdFusion
+# authentication_type           type_of_authentication		Unassigned
+# architecture_type             type_of_architecture		Web App
+# browser_support               supported_browser		IE
+# functional_type               business_function		General Admin
+# network services used         usage_of_network_services       Unassigned
+# security_pii_type             pii_type_instance               Unassigned
