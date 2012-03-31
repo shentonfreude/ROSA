@@ -10,7 +10,7 @@ from views import list_apps
 
 #from views import search, browse, approved, closed
 applications = {
-    'queryset' : Application.objects.all()
+    'queryset' : Application.objects.all().order_by('acronym', 'release')
     }
 
 urlpatterns = patterns(

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db.models import Model, ForeignKey, ManyToManyField
-from django.db.models import NullBooleanField, CharField, DateField, EmailField, IntegerField, TextField
+from django.db.models import NullBooleanField, CharField, DateField, TimeField, EmailField, IntegerField, TextField
 
 # TODO: make these key tables UNIQ
 
@@ -161,64 +161,6 @@ class TriageLevel(Model):          # FK
 
 # People should be FKs to, so we don't misspell Andrew/ANDREW/Andy Bonceck/BONCEK
 
-UNUSED_FIELDS = (               # Never populated in Rosa export
-    'acronym_inter_notes',
-    'app_doc_type',
-    'bia_assesment',
-    'capcity_requirement',
-    'data_owner',
-    'date_holder',
-    'date_holder2',
-    'dbms_type',
-    'holder1',
-    'holder2',
-    'holder3',
-    'hw_support',
-    'internet_zone',
-    'os_name',
-    'os_support',
-    'pvcs_created_date',
-    'record_retention_number',
-    'relocation_center',
-    'security_impact',
-    'security_info_category',
-    'source_code_location',
-    'source_code_location_comment',
-    'archive_code',         # 460 are '0', 2098 are empty
-    'gots_agency_info'      # all empty but 1 'Jason Bollinger 321-867-4334'
-    'migration_id',         # 2558 are always '1'
-    'orgcode',              # all 2558 are 'A'
-    'sw_tools',             # all empty but 1 'Dreamweaver'
-    # Other crap fields we found on insert
-    'combined_search',
-    'userlevel',
-    'migration_id',
-    'gots_agency_info',
-    'doclevel',
-    'software_category_all',
-    'location_all',
-    'filename',
-    'version_version_number',
-    'acronym_inter_direction_all',
-    'sr_number_all',
-    'group_code',
-    'bia_category_all',
-    'requests',
-    'cm_entered_date',
-    'app_type_all',
-    'entered_date',
-    'access_history',
-    're_entered_date',
-    'syskey',
-    'architecture_type_all',
-    'doc_number',
-    'server_db_name_all',
-    'icon',
-    'version_highest_version_flag',
-    )
-
-DATE_FIELDS = ('release_date', 'cm_resubmit_date') # have to transform on load
-
 # We're not having separate Application and Version objects:
 # almost every field can change, version to version.
 # In ROSA, even the Description is changed from 1.0 to 2.5.3.
@@ -231,20 +173,20 @@ class Application(Model):
     acronymrelease              = CharField(max_length=128, blank=True, null=True) # DUPES acronym + release "PAVE 2.5.3"
     app_name                    = CharField(max_length=128) # Providing Advanced Visibilty Effort
     app_status                  = ManyToManyField(AppStatus, blank=True, null=True) #Archived, Cancelled, Current Version, ... HOW CAN THIS BE M2M???
-    app_status_comments         = CharField(max_length=128, blank=True, null=True) # TOO MANY: 413
+    app_status_comments         = TextField(max_length=128, blank=True, null=True) # TOO MANY: 413
     app_type                    = ManyToManyField(AppType, blank=True, null=True) #Application, General Support System, Major Application, ...
     app_usage                   = ManyToManyField(AppUsage, blank=True, null=True) #Agency-Wide, HQ-Wide, Multiple Org, ...
-    app_users_num               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 120
+    app_users_num               = IntegerField(max_length=128, blank=True, null=True) # TOO MANY: 120
     architecture_type           = ManyToManyField(ArchitectureType, blank=True, null=True) #C/S, C/S and Web App, M/F, Web App, ...
     authentication_type         = ManyToManyField(AuthenticationType, blank=True, null=True) #Active Directory, ID/PW Only, ID/PW and Token, ...
     awrs_checklist              = NullBooleanField(blank=True, null=True) 
     awrs_indicator              = NullBooleanField(blank=True, null=True)
     bia_category                = ForeignKey(BiaCategory, blank=True, null=True) # ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
     browser_support             = ManyToManyField(BrowserSupport, blank=True, null=True) #IE, MOZILLA, Mozilla, STANDARD WEB BROWSER
-    cm_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 2511 -- TODO TimeField?
+    cm_entered_time             = TimeField(max_length=128, blank=True, null=True) # TOO MANY: 2511 -- TODO TimeField?
     cm_resubmit_date            = DateField(blank=True, null=True) 
     dbms_name                   = ManyToManyField(DbmsName, blank=True, null=True) #TOO MANY=104
-    description                 = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1162
+    description                 = TextField(max_length=128, blank=True, null=True) # TOO MANY: 1162
     dev_name_alternate          = CharField(max_length=128, blank=True, null=True) # TOO MANY: 229
     dev_name_primary            = CharField(max_length=128, blank=True, null=True) # TOO MANY: 253
     fed_record_qualification    = NullBooleanField(blank=True, null=True)
@@ -271,9 +213,9 @@ class Application(Model):
     owner_org_name              = CharField(max_length=128, blank=True, null=True) # TOO MANY: 454
     pk_doc_number               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 2523
     privacy_act                 = NullBooleanField(blank=True, null=True)
-    re_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1269
+    re_entered_time             = TimeField(max_length=128, blank=True, null=True) # TOO MANY: 1269
     release                     = CharField(max_length=128) # 2.5.3
-    release_change_description  = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1684
+    release_change_description  = TextField(max_length=128, blank=True, null=True) # TOO MANY: 1684
     release_date                = DateField(blank=True, null=True) # TOO MANY: 1457 TODO DateField
     release_notes               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 220
     release_status              = ForeignKey(ReleaseStatus, blank=True, null=True) # ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
