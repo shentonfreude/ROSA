@@ -7,7 +7,6 @@ from models import ArchitectureType
 from models import AuthenticationType
 from models import BiaCategory
 from models import BrowserSupport
-from models import CmResubmitDate
 from models import FipsInfoCategory
 from models import Frequency
 from models import FunctionalType
@@ -42,7 +41,6 @@ admin.site.register(ArchitectureType)
 admin.site.register(AuthenticationType)
 admin.site.register(BiaCategory)
 admin.site.register(BrowserSupport)
-admin.site.register(CmResubmitDate)
 admin.site.register(FipsInfoCategory)
 admin.site.register(Frequency)
 admin.site.register(FunctionalType)

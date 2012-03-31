@@ -41,11 +41,6 @@ class BrowserSupport(Model):       # M2M
     def __unicode__(self):
         return u'%s' % (self.name)
 
-class CmResubmitDate(Model):       # M2M
-    name = DateField(blank=True, null=True) #
-    def __unicode__(self):
-        return u'%s' % (self.name)
-
 class DbmsName(Model):       # M2M
     name = CharField(max_length=64, blank=True) #
     def __unicode__(self):
@@ -222,6 +217,8 @@ UNUSED_FIELDS = (               # Never populated in Rosa export
     'version_highest_version_flag',
     )
 
+DATE_FIELDS = ('release_date', 'cm_resubmit_date') # have to transform on load
+
 # We're not having separate Application and Version objects:
 # almost every field can change, version to version.
 # In ROSA, even the Description is changed from 1.0 to 2.5.3.
@@ -245,7 +242,7 @@ class Application(Model):
     bia_category                = ForeignKey(BiaCategory, blank=True, null=True) # ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
     browser_support             = ManyToManyField(BrowserSupport, blank=True, null=True) #IE, MOZILLA, Mozilla, STANDARD WEB BROWSER
     cm_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 2511 -- TODO TimeField?
-    cm_resubmit_date            = ManyToManyField(CmResubmitDate, blank=True, null=True) # TOO MANY: 297  -- TODO DateField
+    cm_resubmit_date            = DateField(blank=True, null=True) 
     dbms_name                   = ManyToManyField(DbmsName, blank=True, null=True) #TOO MANY=104
     description                 = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1162
     dev_name_alternate          = CharField(max_length=128, blank=True, null=True) # TOO MANY: 229
@@ -277,7 +274,7 @@ class Application(Model):
     re_entered_time             = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1269
     release                     = CharField(max_length=128) # 2.5.3
     release_change_description  = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1684
-    release_date                = CharField(max_length=128, blank=True, null=True) # TOO MANY: 1457 TODO DateField
+    release_date                = DateField(blank=True, null=True) # TOO MANY: 1457 TODO DateField
     release_notes               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 220
     release_status              = ForeignKey(ReleaseStatus, blank=True, null=True) # ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
     sec_plan_number             = ForeignKey(SecPlanNumber, blank=True, null=True) # [' 20090812', '0A-801-M-NHQ-0001', '20090812',...]

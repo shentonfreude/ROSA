@@ -13,7 +13,7 @@ from django.db.models.fields import FieldDoesNotExist
 from django.db import models
 
 from application.models import Application
-from application.models import UNUSED_FIELDS
+from application.models import UNUSED_FIELDS, DATE_FIELDS
 
 logging.basicConfig(level=logging.INFO)
 
@@ -72,6 +72,8 @@ for json_app in json_apps:
             (field, fmodel, direct, m2m) = dep_field = model._meta.get_field_by_name(k)
         except FieldDoesNotExist, e:
             logging.warning("ERR NOFIELD: %s", e)
+        if k in DATE_FIELDS:    # transform DB's 20120330 to 2012-03-30
+            v = "%4s-%2s-%2s" % (v[0:4], v[4:6], v[6:8])
         if not field.rel:       # directly attached
             setattr(app, k, v)
         else:
