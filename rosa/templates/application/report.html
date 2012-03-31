@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}ROSA: Search Results{% endblock %}
+{% block content %}
+<h1>Report</h1>
+
+<p>Select a report to run from the links below</p>
+<ul>
+  <li><a href="{% url report_current %}">Current apps</a></li>
+  <li><a href="{% url report_development %}">In Development apps</a></li>
+</ul>
+
+{% endblock %}

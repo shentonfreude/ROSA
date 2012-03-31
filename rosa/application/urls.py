@@ -3,6 +3,7 @@ from django.views.generic import list_detail
 
 from models import Application
 from views import application_versions, app_details, search
+from views import report, report_current, report_development
 
 #from views import search, browse, approved, closed
 applications = {
@@ -13,8 +14,14 @@ applications = {
 urlpatterns = patterns(
     '',
     url(r'^$',                  list_detail.object_list, applications, name='list_apps'),
+
     url(r'^all$',               application_versions, name='app_versions'),
-    url(r'^search/$', search, name='search'), # trailing slash needed for post to '.', why?
+
+    url(r'^search/$',             search,             name='search'), # trailing slash needed for post to '.'
+
+    url(r'^report/$',             report,             name='report'),
+    url(r'^report_current/$',     report_current,     name='report_current'),
+    url(r'^report_development/$', report_development, name='report_development'),
 
     url(r'^(?P<object_id>\d+)$',       app_details, name='app_details'),
     # url(r'^(?P<object_id>\d+)$',  list_app_versions, name="list_app_versions"),
