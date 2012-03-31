@@ -1,6 +1,8 @@
 # Create your views here.
 # Fuck, do I really have to make a view for this? 
 
+from collections import OrderedDict
+
 from django.core.context_processors import csrf
 from django.core.urlresolvers import reverse
 from django.db.models import Q
@@ -23,9 +25,39 @@ from models import Application
 
 def list_apps(request):
     return render_to_response('list_apps.html',
-                              {'apps': Application.objects.all().order_by('acronym'),
+                              {'apps': Application.objects.all().order_by('acronym', 'release'),
                                },
                               context_instance=RequestContext(request));
+
+def application_versions(request):
+    """Return sorted list of Arco and Versions
+    ['Acro': [<appv1>, <appv2>, ...], 'Zeta':[<apps>...]]
+    Render like:
+    BESS  1.1, 1.2, 2.1
+    CATS  2.0, 2.3, 2.4
+    """
+    apps = Application.objects.all().order_by('acronym', 'release')
+    appvers = OrderedDict()
+    for app in apps:
+        acro = app.acronym
+        if not acro in appvers:
+            appvers[acro] = []
+        appvers[acro].append(app)
+    return render_to_response('application/application_versions.html',
+                              {'application_versions': appvers
+                               },
+                              context_instance=RequestContext(request));
+
+def app_details(request, object_id):
+    """Return full application.
+    Shouldn't this be done with Generic View? 
+    """
+    return render_to_response('application/application_details.html',
+                              {'app': Application.objects.get(pk=object_id)
+                               },
+                              context_instance=RequestContext(request));
+
+
 
 # def list_app_versions(request, object_id):
 #     # Bug: we have multiple versions of each App on import
