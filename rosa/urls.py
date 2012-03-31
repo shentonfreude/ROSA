@@ -4,7 +4,8 @@ from django.views.generic.simple import direct_to_template
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$',     direct_to_template, {'template': 'home.html'}, name='home'),
     # url(r'^help$', direct_to_template, {'template': 'help.html'}, name='help'),
 
