@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block leftnav %}
+<li class="nav-header">To Do: Alphabet Index jump...</li>
+<li><a href="#A">A</a></li>
+<li><a href="#B">B</a></li>
+<li><a href="#...">...</a></li>
+<li><a href="#Y">Y</a></li>
+<li><a href="#Z">Z</a></li>
+{% endblock %}
+
+<li class="
+{% block content %}
+<h1>All Applications and Versions</h1>
+
+<p>Every application is listed by its acronym, and each of its
+versions is provided as a click-able link.</p>
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>Acronym</th>
+      <th>Versions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for acro, apps in application_versions.items %}
+    <tr>
+      <td>{{acro}}</td>
+      <td>
+        {% for appver in apps %}
+        <a href="{% url app_details object_id=appver.id %}">{{appver.release}}</a>
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+
+</table>
+
+{% endblock %}
