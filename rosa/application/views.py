@@ -58,6 +58,31 @@ def app_details(request, object_id):
                               context_instance=RequestContext(request));
 
 
+class SearchForm(Form):
+    text   = CharField(max_length=80, required=True)
+
+def search(request):
+    """Search common fields for substring match:
+    acronym, name, description, ...
+    TODO: We should match what ROSA does, even if it's dumb.
+    """
+    if request.method == 'POST':
+        form = SearchForm(data=request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            q = Q(acronym__icontains=text)
+            q = q | Q(app_name__icontains=text)
+            q = q | Q(description__icontains=text)
+            apps = Application.objects.filter(q).order_by('acronym', 'release')
+            return render_to_response('application/search_results.html',
+                                      {'object_list': apps},
+                                      context_instance=RequestContext(request));
+    else:
+        form = SearchForm()
+    return render_to_response('application/search.html',
+                              {'form': form},
+                              context_instance=RequestContext(request));
+
 
 # def list_app_versions(request, object_id):
 #     # Bug: we have multiple versions of each App on import
