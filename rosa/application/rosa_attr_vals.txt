@@ -1,0 +1,220 @@
+acronym: TOO MANY: 771
+acronym_inter_direction: TOO MANY: 39
+acronym_inter_method: TOO MANY: 44
+acronym_inter_notes: [None]
+acronym_interface: TOO MANY: 325
+acronymrelease: TOO MANY: 2523
+app_doc_type: [None]
+app_name: TOO MANY: 878
+app_status: ['\n\t\t\t']
+           : KIDS TAGS=['status_of_app']
+           :       VAL=Archived
+           :       VAL=Cancelled
+           :       VAL=Current Version
+           :       VAL=In Development
+           :       VAL=In Suspense
+           :       VAL=Inactive
+           :       VAL=Moved
+           :       VAL=Prior Version
+           :       VAL=Roll Back
+           :       VAL=Unassigned
+app_status_comments: TOO MANY: 413
+app_type: ['\n\t\t\t']
+         : KIDS TAGS=['type_of_application']
+         :       VAL=Application
+         :       VAL=General Support System
+         :       VAL=Major Application
+         :       VAL=Special Management Attention
+         :       VAL=Unassigned
+         :       VAL=Web Site
+app_usage: ['\n\t\t\t']
+          : KIDS TAGS=['usage_of_app_description']
+          :       VAL=Agency-Wide
+          :       VAL=HQ-Wide
+          :       VAL=Multiple Org
+          :       VAL=Not Applicable
+          :       VAL=Public
+          :       VAL=Single Org
+          :       VAL=Unassigned
+app_users_num: TOO MANY: 120
+architecture_type: ['\n\t\t\t']
+                  : KIDS TAGS=['type_of_architecture']
+                  :       VAL=C/S
+                  :       VAL=C/S and Web App
+                  :       VAL=M/F
+                  :       VAL=Not Applicable
+                  :       VAL=Unassigned
+                  :       VAL=Web App
+                  :       VAL=Web Site
+                  :       VAL=Workstation
+archive_code: [None, '0']
+authentication_type: ['\n\t\t\t']
+                    : KIDS TAGS=['type_of_authentication']
+                    :       VAL=Active Directory
+                    :       VAL=ID/PW Only
+                    :       VAL=ID/PW and Token
+                    :       VAL=Launchpad
+                    :       VAL=Not Applicable
+                    :       VAL=Token                     Only
+                    :       VAL=Token Only
+                    :       VAL=Unassigned
+awrs_checklist: [None, 'No', 'Unassigned', 'Yes']
+awrs_indicator: ['No', 'Not Applicable', 'Unassigned', 'Yes']
+bia_assesment: [None]
+bia_category: ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
+browser_support: [None, '\n\t\t\t']
+                : KIDS TAGS=['supported_browser']
+                :       VAL=IE
+                :       VAL=MOZILLA
+                :       VAL=Mozilla
+                :       VAL=NOT APPLICABLE
+                :       VAL=Not Applicable
+                :       VAL=STANDARD WEB BROWSER
+                :       VAL=Standard Web Browsers
+                :       VAL=UNASSIGNED
+                :       VAL=Unassigned
+capcity_requirement: [None]
+cm_entered_time: TOO MANY: 2511
+cm_resubmit_date: TOO MANY: 297
+data_owner: [None]
+date_holder: [None]
+date_holder2: [None]
+dbms_name: [None, '\n\t\t\t']
+          : KIDS TAGS=['dbms_instance_name']
+          :       VAL=TOO MANY=104
+dbms_type: [None]
+description: TOO MANY: 1162
+dev_name_alternate: TOO MANY: 229
+dev_name_primary: TOO MANY: 253
+fed_record_qualification: ['No', 'Unassigned', 'Yes']
+fed_registy: [None, 'No', 'Unassigned', 'Yes']
+fips_info_category: [None, 'C.3.5.7 Information Management Information Type', 'Low', 'Medium', 'Moderate', 'Moderate: D.20.1, C.3.5.1', 'Not Applicable', 'Unassigned', 'Unassinged']
+firewall_factor: [None, 'No', 'Not Applicable', 'Unassigned', 'Yes']
+frequency: ['ANNUALLY', 'AS NEEDED', 'Annually', 'As Needed', 'DAILY', 'Daily', 'Monthly', 'Not Applicable', 'UNASSIGNED', 'Unassigned', 'Weekly']
+functional_type: ['\n\t\t\t']
+                : KIDS TAGS=['business_function']
+                :       VAL=Acct
+                :       VAL=Budget
+                :       VAL=DMS
+                :       VAL=Finance
+                :       VAL=GENERAL ADMIN
+                :       VAL=General Admin
+                :       VAL=N/A
+                :       VAL=NOT APPLICABLE
+                :       VAL=Not Applicable
+                :       VAL=PUBLIC
+                :       VAL=Payroll & Personnel
+                :       VAL=Property & Procurement
+                :       VAL=Public
+                :       VAL=SUPPORT
+                :       VAL=Support
+                :       VAL=Unassigned
+gots_agency_info: [None, 'Jason Bollinger 321-867-4334', 'N/A', 'NOT APPLICABLE', 'Not Applicable', 'Unassigned']
+gots_poc: [None, 'Beverly Smith', 'DCAA', 'DOI NBC', 'Department of Treasury.  Help Desk 1-800-246-5465.  http://fms.treas.gov/notification/subscription.a', 'Department of Treasury.  Help Desk 202-874-4357.  GOALS Help Desk 202-874-8270.  Ipac.htlp@fms.treas', 'Department of Treasury.  Help Desk 202-874-4357.  GOALS Help Desk 202-874-8270.  http://fms.treas.go', 'Department of Treasury.  Help Desk 202-874-8021.  Angie Jones 202-874-7719.  http://fms.treas.gov/no', 'EPA', 'GSA', 'Knowledge Sharing System, Inc.', 'N/A', 'NASA GRC.  Help Line 216-977-1298', 'NASA GSFC   Camilla Logan 301-286-0122 clogan@pop200.gsfc.nasa.gov', 'NASA GSFC.  David Baukman 301-286-2549', 'NASA MSFC.  David Pezzoli 256-544-0633', 'NASA MSFC.  Tonia Martin 256-544-6506', 'NASA SSC.  Tom Stanley 228-688-7779', 'No info', 'OMB.  Jane May 202-395-6934.  OMB Client Services at (202) 395-7370', 'Regulatory Information Service Center (RISC). General Services Administration 1800 F Street NW., Sui', 'See description box for Agency-Contact Info', 'The Division of Payment Management is a Division of the US Department of Health & Human Services wit', 'URS', 'US Army Audit Agency', 'Unassigned', 'http://ifmp.msfc.nasa.gov/soft_config/index.html']
+hitss_supported: [None, 'No', 'Unassigned', 'Yes']
+holder1: [None]
+holder2: [None]
+holder3: [None]
+html_link: TOO MANY: 558
+hw_support: [None]
+internal_system: [None, 'E', 'I', 'Not Applicable', 'Unassigned']
+internet_zone: [None]
+location: ['\n\t\t\t']
+         : KIDS TAGS=['location_of_app']
+         :       VAL=GSFC
+         :       VAL=MSFC
+         :       VAL=NACC-CPO
+         :       VAL=NASA HQ Hosted
+         :       VAL=NASA Portal
+         :       VAL=NDC-MSFC
+         :       VAL=NHCC
+         :       VAL=Non NASA Site
+         :       VAL=Not Applicable
+         :       VAL=SEF
+         :       VAL=Unassigned
+         :       VAL=User Workstation
+managed_records: [None, 'C', 'CS', 'Unassigned']
+manager_app_development: TOO MANY: 67
+manager_project: TOO MANY: 106
+migration_id: ['1']
+nasa_off_name: TOO MANY: 75
+nasa_requester: TOO MANY: 554
+network_services_used: ['\n\t\t\t']
+                      : KIDS TAGS=['usage_of_network_service']
+                      :       VAL=Extranet
+                      :       VAL=Intranet
+                      :       VAL=Not Applicable
+                      :       VAL=Unassigned
+nrrs_disposition: ['No', 'Unassigned', 'Yes']
+nrrs_schedule_item: TOO MANY: 56
+orgcode: ['A']
+os_name: [None]
+os_support: [None]
+owner: TOO MANY: 472
+owner_org: TOO MANY: 305
+owner_org_name: TOO MANY: 454
+pk_doc_number: TOO MANY: 2523
+privacy_act: [None, 'No', 'Unassigned', 'Yes']
+pvcs_created_date: [None]
+re_entered_time: TOO MANY: 1269
+record_retention_number: [None]
+release: TOO MANY: 303
+release_change_description: TOO MANY: 1684
+release_date: TOO MANY: 1457
+release_notes: TOO MANY: 220
+release_status: ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
+relocation_center: [None]
+sec_plan_number: [None, ' 20090812', '0A-801-M-NHQ-0001', '20090812', 'GSFC Security Plan Number', 'NHCC OA-801-M-NHQ-1001', 'NHCC OA-801-MNHQ-1001', 'NN-101-M-NHQ-0009', 'Not Applicable', 'OA 601 M NHQ 001', 'OA-601-M-NHQ-0001', 'OA-800-M-NHQ-0001 NHCC', 'OA-801-M-NHQ-0001', 'OA-801-M-NHQ-1001', 'OA-801M-NHQ-0001', 'OA-901-M-NHQ-0001', 'OQ-801-M-NHQ-1001', 'SO-999-L-NHQ-0001', 'UNASSIGNED', 'Unassigned']
+section2810compliant: ['No', 'Not Applicable', 'Partial', 'Unassigned', 'Yes']
+section508complaint: ['No', 'Not Applicable', 'Unassigned', 'Yes']
+security_impact: [None]
+security_info_category: [None]
+security_itcd_owner: [None, 'ANDREW BONCEK', 'ANDY BONCEK', 'Andrew Boncek', 'Andy Boncek', 'Ben Cohen', 'Bryan McCall', 'Dennis Groth', 'Donnie Green', 'GREG KERR', 'GREG KERR,DENNIS GROTH', 'GREGORY KERR', 'Greg Kerr', 'Gregory kerr', 'JEFFREY N HALL', 'Jeff Hall', 'Jeffrey N Hall', 'Jeffrey hall', 'Leslie Cahoon', 'Liteshia Dennis', 'Marion Meissner', 'Not Applicable', 'SAM RAMOS', 'Sam Ramos', 'Unassigned', 'Unassigned.']
+security_pii_indicator: ['No', 'Not Applicable', 'Unassigned', 'Yes']
+security_pii_type: [None, '\n\t\t\t']
+                  : KIDS TAGS=['pii_type_instance']
+                  :       VAL=TOO MANY=51
+security_sensitivity: [None, 'BIA info Category = ADM-Administrative', 'FOIA', 'FOIA Exempt', 'FOIA exempt', 'Low', 'Moderate', 'N/A', 'Not Applicable', 'Other', 'Other-Procurement Sensitive', 'Public', 'Public by request only', 'Public-Web Published', 'Public-Web published', 'Public-by request only', 'Public-web published', 'Sensitive but Unclassifed', 'Sensitive but Unclassified', 'Sensitive but Unclassified\n', 'Sensitive but Unclassified\nInformation Types: C.2.6.2, C.2.7.2, C.3.5.6, D.19.2', 'Sensitive but Unclassified (SBU)', 'Sensitive but unclassified', 'TBD', 'Unassigned']
+server_app_name: TOO MANY: 122
+server_db_name: [None, '\n\t\t\t']
+               : KIDS TAGS=['server_db_instance_name']
+               :       VAL=TOO MANY=81
+server_report_name: [None, 'CASPIAN', 'Caspian', 'DRAGONOV', 'HQDATA1 Server', 'NOT APPLICABLE', 'Not Applicable', 'Panther', 'RANA', 'RASTABAN', 'RIGEL', 'Rana', 'Rana(Crystal), Cursa(Brio)', 'Rana, Cursa', 'Rastaban', 'Regulus', 'Rigel', 'UNASSIGNED', 'Unassigned']
+software_category: ['\n\t\t\t']
+                  : KIDS TAGS=['category_of_software']
+                  :       VAL=A
+                  :       VAL=B
+                  :       VAL=C
+                  :       VAL=D
+                  :       VAL=E
+                  :       VAL=F
+                  :       VAL=G
+                  :       VAL=H
+                  :       VAL=Not Applicable
+                  :       VAL=Not applicable
+                  :       VAL=Unassigned
+sorn: [None, '10SECR', 'In Draft', 'N/A', 'NOT APPLICABLE', 'None', 'Not Applicable', 'Schedule 9, 9000.3', 'UNASSIGNED', 'Unassiged', 'Unassigned', 'Yes', 'Yes, Need Number']
+source_code_location: [None]
+source_code_location_comment: [None]
+sr_class: ['\n\t\t\t']
+         : KIDS TAGS=['sr_class_instance']
+         :       VAL=1
+         :       VAL=2
+         :       VAL=Not Applicable
+         :       VAL=Unassigned
+sr_number: TOO MANY: 1963
+sr_task_order: TOO MANY: 78
+ssn_system: [None, 'No', 'Unassigned', 'Yes']
+support_status: ['\n\t\t\t']
+               : KIDS TAGS=['support_status_instance']
+               :       VAL=COTS
+               :       VAL=CUSTOM
+               :       VAL=Custom
+               :       VAL=GOTS
+               :       VAL=MOTS
+               :       VAL=Unassigned
+sw_language: [None, '\n\t\t\t']
+            : KIDS TAGS=['sw_language_name']
+            :       VAL=TOO MANY=827
+sw_tools: [None, 'Dreamweaver', 'Unassigned']
+triage_level: ['Call List', 'Not Applicable', 'Triage 2', 'Triage 3', 'Unassigned']
