@@ -1,10 +1,27 @@
 {% extends "base.html" %}
+
+{% block title %}ROSA: {{app.acronym}} {{app.release}}{% endblock %}
+
+{% block leftnav %}
+<li class="nav-header">Quick jump...</li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#vitals">Vitals</a></li>
+<li><a href="#details">Details</a></li>
+<li><a href="#personnel">Personnel</a></li>
+<li><a href="#systems">Systems</a></li>
+<li><a href="#interfaces">Interfaces</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#certification">Certification</a></li>
+<li><a href="#process">Process</a></li>
+<li><a href="#tbd">TBD</a></li>
+{% endblock %}
+
 {% block content %}
-<h1>Application Version Details</h1>
+<h1>Details: {{app.acronym}} {{app.release}}</h1>
 
 <div class="row-fluid">
   <div class="span8">
-    <h2>Overview</h2>
+    <a name="overview"><h2>Overview</h2></a>
     <dl>
       <dt>Name                        </dt><dd>{{app.app_name                    }}</dd>
       <dt>Description                 </dt><dd>{{app.description                 }}</dd>
@@ -13,7 +30,7 @@
     </dl>
   </div>
   <div class="span4">
-    <h2>Vitals</h2>
+    <a name="vitals"><h2>Vitals</h2></a>
     <dl>
       <dt>Acronym                     </dt><dd>{{app.acronym                     }}</dd>
       <dt>Release                     </dt><dd>{{app.release                     }}</dd>
@@ -28,7 +45,7 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <h2>Details</h2>
+    <a name="details"><h2>Details</h2></a>
     <dl>
       <dt>Comments                    </dt><dd>{{app.app_status_comments         }}</dd>
       <dt>Functional Type             </dt><dd>{{app.functional_type.all|join:", "             }}</dd>
@@ -46,7 +63,7 @@
     </dl>
   </div>
   <div class="span6">
-    <h2>Personnel</h2>
+    <a name="personnel"><h2>Personnel</h2></a>
     <dl>
       <dt>Owner                       </dt><dd>{{app.owner                       }}</dd>
       <dt>Owner Org                   </dt><dd>{{app.owner_org                   }}</dd>
@@ -66,7 +83,7 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <h2>Systems</h2>
+    <a name="systems"><h2>Systems</h2></a>
     <dl>
       <dt>Internal System             </dt><dd>{{app.internal_system             }}</dd>
       <dt>Location                    </dt><dd>{{app.location.all|join:", "                    }}</dd>
@@ -78,7 +95,7 @@
     </dl>
   </div>
   <div class="span6">
-    <h2>Interfaces</h2>
+    <a name="interfaces"><h2>Interfaces</h2></a>
     <dl>
       <dt>Acronym Interface           </dt><dd>{{app.acronym_interface           }}</dd>
       <dt>Interface Direction         </dt><dd>{{app.acronym_inter_direction     }}</dd>
@@ -89,7 +106,7 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <h2>Security</h2>
+    <a name="security"><h2>Security</h2></a>
     <dl>
       <dt>ITCD Owner                  </dt><dd>{{app.security_itcd_owner         }}</dd>
       <dt>PII Indicator               </dt><dd>{{app.security_pii_indicator      }}</dd>
@@ -105,7 +122,7 @@
     </dl>
   </div>
   <div class="span6">
-    <h2>Certification</h2>
+    <a name="certification"><h2>Certification</h2></a>
     <dl>
       <dt>AWRS Checklist              </dt><dd>{{app.awrs_checklist              }}</dd>
       <dt>AWRS Indicator              </dt><dd>{{app.awrs_indicator              }}</dd>
@@ -123,7 +140,7 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <h2>Process</h2>
+    <a name="process"><h2>Process</h2></a>
     <dl>
       <dt>SR Class                    </dt><dd>{{app.sr_class.all|join:", "                    }}</dd>
       <dt>SR Number                   </dt><dd>{{app.sr_number                   }}</dd>
@@ -134,7 +151,7 @@
     </dl>
   </div>
   <div class="span6">
-    <h2>TBD</h2>
+    <a name="tbd"><h2>TBD</h2></a>
     <dl>
       <dt>NRRS Disposition            </dt><dd>{{app.nrrs_disposition            }}</dd>
       <dt>NRRS Schedule Item          </dt><dd>{{app.nrrs_schedule_item          }}</dd>
