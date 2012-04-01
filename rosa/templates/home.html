@@ -1,29 +1,44 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>Repository of Supported Applications</h1>
+{% load bootstrap %}
 
-<p>ROSA is a web application for browsing and querying information
-about NASA HQ applications, including application description, support
-team, security compliance, architecture and interface(s) for current
-applications, applications in development and archived
-applications. Key reports such as the Applications Pipeline and
-Release Planner are available to all authorized users as well as a
-sampling of graphic reports currently provided in the Application
-Monthly Review (AMR).</p>
+{% block content %}
+<div class="hero-unit">
+  <h1>ROSA</h1>
+
+  The Repository of Supported Applications is a web application for
+    browsing and querying information about NASA HQ applications,
+    including application description, support team, security
+    compliance, architecture and interface(s) for current
+    applications, applications in development and archived
+    applications. Key reports such as the Applications Pipeline and
+    Release Planner are available to all authorized users as well as a
+    sampling of graphic reports currently provided in the Application
+    Monthly Review (AMR).
+</div>
 
 <h2>What's New in ROSA</h2>
 
 <p>Version 2.0 is written from scratch in Django. It uses Twitter
-Bootstrap for a "responsive" user interface that gracefully resizes
-for different platforms (desktop, mobile). It uses a serverless
-database SQLite or the PostgreSQL database.</p>
+  Bootstrap for a "responsive" user interface that gracefully resizes
+  for different platforms (desktop, mobile). It uses a serverless
+  database SQLite or the PostgreSQL database.</p>
 
 <h2>How to Use It</h2>
 
 <p>You can <a href="{% url app_versions %}">Browse all applications
-and their versions</a> or you can <a href="{% url search %}">Search by
-text</a> in common application attributes.  The links here are the
-same as those on the top menu bar.</p>
+    and their versions</a> or you can <a href="{% url search %}">Search by
+    text</a> in common application attributes.  The links here are the
+  same as those on the top menu bar.</p>
+
+<h2>Search</h2>
+<p>Get started quickly by entering your search text here.</p>
+<div>
+  <form id="search" method="POST" action="{% url search %}" class="well form-horizontal">{% csrf_token %}
+    {{ form|bootstrap }}
+      </br>
+      <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
+  </form>
+</div>
 
 {% endblock %}
 
