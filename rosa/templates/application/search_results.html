@@ -1,9 +1,25 @@
 {% extends "base.html" %}
+
+{% block extrascript %}
+<script>
+  $(document).ready(function()
+    {
+        $("#resultsTable").tablesorter();
+    }
+);
+</script>
+{% endblock %}
+
 {% block title %}ROSA: Search Results{% endblock %}
+
 {% block content %}
+
 <h1>Application Search Results ({{ object_list|length }})</h1>
 
-<table class="table">
+<p>The table is <em>sortable</em>, just click on a header.
+</p>
+
+<table id="resultsTable" class="table tablesorter">
 
   <thead>
     <tr>
@@ -11,7 +27,7 @@
       <th>Release</th>
       <th>Name</th>
       <th>Status</th>
-      <th>Release Date</th>
+      <th>Release Date</th> {# BUG: sorts on alpha April 1, 2012 ... June 30, 1960 #}
       <th>SR Number</th>
       <th>SR Class</th>
       <th>NASA Requester</th>
@@ -24,8 +40,20 @@
       <td><a href="{% url app_details object_id=app.id %}">{{app.acronym}}</a></td>
       <td><a href="{% url app_details object_id=app.id %}">{{app.release}}</a></td>
       <td>{{app.app_name}}</td>
-      <td>{{app.app_status.all|join:", "}}</td>
-      <td>{{app.release_date}}</td>
+      <td
+         {% with status=app.app_status.all|join:"," %}
+         {% if "Current" in status %}
+         class="alert alert-success"
+         {% elif "In Development" in status %}
+         class="alert alert-info"
+         {% elif "In Suspense" in status %}
+         class="alert alert-error"
+         {% endif %}
+           >
+        {{status}}
+        {% endwith %}
+          </td>
+      <td>{{app.release_date|date:"m/d/Y"}}</td>
       <td>{{app.sr_number}}</td>
       <td>{{app.sr_class.all|join:", "}}</td>
       <td>{{app.nasa_requester}}</td>

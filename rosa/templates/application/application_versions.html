@@ -31,7 +31,22 @@ versions is provided as a click-able link.</p>
       <td>{{acro}}</td>
       <td>
         {% for appver in apps %}
-        <a href="{% url app_details object_id=appver.id %}">{{appver.release}}</a>
+        {% with status=appver.app_status.all|join:"," %}
+          <a {% if "Current" in status %}
+             class="label label-success"
+             {% elif "In Development" in status %}
+             class="label label-info"
+             {% elif "Archived" in status %}
+             class="label"
+             {% elif "In Suspense" in status %}
+             class="label label-important"
+             {% elif "Unassigned" in status %}
+             class="label label-warning"
+             {% elif "Cancelled" in status %}
+             class="label label-inverse"
+             {% endif %}
+             href="{% url app_details object_id=appver.id %}">{{appver.release}}</a>
+          {% endwith %}
         {% endfor %}
       </td>
     </tr>

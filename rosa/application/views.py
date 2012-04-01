@@ -1,5 +1,4 @@
-# Create your views here.
-# Fuck, do I really have to make a view for this? 
+import logging
 
 from collections import OrderedDict
 
@@ -12,16 +11,24 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-import logging
+from models import Application
+
 logging.basicConfig(level=logging.INFO)
 
-#from models import Project, Center, Status
+
+class SearchForm(Form):
+    text   = CharField(max_length=80, required=True)
 
 
-from csv import DictReader
-from models import Application
-#, Version, OrganizationalAcronym, TaskOrder, ApplicationType, SoftwareClass, ReleaseStatus
-#from models import InformationSensitivity, AuthenticationMethod, TriageLevel, ApplicationUserGroup, FrequencyUsed
+def home(request):
+    """Show Hero logo and provide a search box for convenience.
+    """
+    return render_to_response('home.html',
+                              {'form': SearchForm(),
+                               },
+                              context_instance=RequestContext(request));
+
+
 
 def list_apps(request):
     return render_to_response('list_apps.html',
@@ -57,9 +64,6 @@ def app_details(request, object_id):
                                },
                               context_instance=RequestContext(request));
 
-
-class SearchForm(Form):
-    text   = CharField(max_length=80, required=True)
 
 def search(request):
     """Search common fields for substring match:
