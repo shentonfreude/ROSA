@@ -17,7 +17,6 @@
 <h1>Application Search Results ({{ object_list|length }})</h1>
 
 <p>The table is <em>sortable</em>, just click on a header.
-  [TODO: I need to highlight and put up/down arrows].
 </p>
 
 <table id="resultsTable" class="table tablesorter">
@@ -54,7 +53,7 @@
         {{status}}
         {% endwith %}
           </td>
-      <td>{{app.release_date}}</td>
+      <td>{{app.release_date|date:"m/d/Y"}}</td>
       <td>{{app.sr_number}}</td>
       <td>{{app.sr_class.all|join:", "}}</td>
       <td>{{app.nasa_requester}}</td>

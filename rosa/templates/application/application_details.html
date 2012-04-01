@@ -34,9 +34,9 @@
     <dl>
       <dt>Acronym                     </dt><dd>{{app.acronym                     }}</dd>
       <dt>Release                     </dt><dd>{{app.release                     }}</dd>
-      {#    <dt>acronymrelease              </dt><dd>{{app.acronymrelease              }}</dd>#}
-      <dt>App Status                  </dt><dd>{{app.app_status.all|join:", "                  }}</dd>
-      <dt>Release Date                </dt><dd>{{app.release_date                }}</dd>
+    {#<dt>acronymrelease              </dt><dd>{{app.acronymrelease              }}</dd>#}
+      <dt>App Status                  </dt><dd>{{app.app_status.all|join:", "          }}</dd>
+      <dt>Release Date                </dt><dd>{{app.release_date|date:"m/d/Y"   }}</dd>
       <dt>Release Status              </dt><dd>{{app.release_status              }}</dd>
     </dl>
   </div>
