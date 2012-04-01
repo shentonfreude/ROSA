@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block leftnav %}
+<li class="nav-header">Quick Jump...</li>
+{% for c, acronyms in alphabin.items %}
+<li><a href="#{{c}}">{{c}}</a></li>
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<h1>Application Acronyms</h1>
+
+{% for c, acronyms in alphabin.items %}
+<a name="{{c}}"><h2>{{c}}</h2></a>
+<p>
+  {% for acronym in acronyms %}
+  <a class="label label-info"
+     href="{% url acronyms acronym=acronym.acronym|urlencode %}">{{acronym.acronym}}</a>
+  {# &nbsp;&nbsp;   How can I put more space between these, or separate them? #}
+  {% endfor %}
+</p>
+{% endfor %}
+{% endblock %}

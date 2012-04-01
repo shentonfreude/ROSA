@@ -29,6 +29,25 @@ def home(request):
                               context_instance=RequestContext(request));
 
 
+def acronyms(request, acronym=None):
+    if not acronym:
+        acros = Application.objects.values('acronym').distinct().order_by('acronym')
+        # alphabin them by acronym
+        alphabin = OrderedDict()
+        for acro in acros:
+            c = acro['acronym'][0]
+            if c not in alphabin:
+                alphabin[c] = []
+            alphabin[c].append(acro)
+        return render_to_response('application/acronyms.html',
+                                  {'object_list': acros,
+                                   'alphabin': alphabin},
+                                  context_instance=RequestContext(request));
+    
+    apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
+    return render_to_response('application/search_results.html',
+                              {'object_list': apps},
+                              context_instance=RequestContext(request));
 
 def list_apps(request):
     return render_to_response('list_apps.html',
