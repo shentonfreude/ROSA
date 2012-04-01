@@ -1,9 +1,26 @@
 {% extends "base.html" %}
+
+{% block extrascript %}
+<script>
+  $(document).ready(function()
+    {
+        $("#resultsTable").tablesorter();
+    }
+);
+</script>
+{% endblock %}
+
 {% block title %}ROSA: Search Results{% endblock %}
+
 {% block content %}
+
 <h1>Application Search Results ({{ object_list|length }})</h1>
 
-<table class="table">
+<p>The table is <em>sortable</em>, just click on a header.
+  [TODO: I need to highlight and put up/down arrows].
+</p>
+
+<table id="resultsTable" class="table tablesorter">
 
   <thead>
     <tr>
@@ -11,7 +28,7 @@
       <th>Release</th>
       <th>Name</th>
       <th>Status</th>
-      <th>Release Date</th>
+      <th>Release Date</th> {# BUG: sorts on alpha April 1, 2012 ... June 30, 1960 #}
       <th>SR Number</th>
       <th>SR Class</th>
       <th>NASA Requester</th>
