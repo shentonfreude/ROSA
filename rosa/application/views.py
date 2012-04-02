@@ -20,8 +20,8 @@ logging.basicConfig(level=logging.INFO)
 class SearchForm(Form):
     text   = CharField(max_length=80, required=True)
 
-BOOTSTRAP_LABEL = {
-    "Archived"          : "label",               # gray
+BOOTSTRAP_LABEL = {                                # underscore names for template access
+    "Archived"          : "label",                 # gray
     "Cancelled"         : "label label-inverse",   # black
     "Current Version"   : "label label-success",   # green
     "Current_Version"   : "label label-success",   # green
@@ -38,60 +38,36 @@ BOOTSTRAP_LABEL = {
     "Unassigned"        : "label label-warning",   # yellow
 }
 
-def acronym_status_class(acronym):
-    """Return Bootstrap color coded class name based on acronym.
-    The different releases of an acronym will have different app_status,
-    and we prefer to show Development to Current.
-    """
-    statuses = Application.objects.filter(acronym=acronym).values_list('app_status__name', flat=True).distinct()
-    if "In Development" in statuses: # prefer to show Development to Current
-        return BOOTSTRAP_LABEL["In Development"]
-    elif "Current Version" in statuses:
-        return BOOTSTRAP_LABEL["Current Version"]
-    else:
-        return ""
-
-# Try improving speed with Applicaiton.objects.prefetch_related()
-
-#select distinct acronym, application_appstatus.name from application_application, application_appstatus;
-# select distinct application_appstatus.name from application_application, application_appstatus where acronym="PAVE";
-
-def _alphabin(iterable, key=None):
-    """Return a dict keyed by the first letter of each item in the iterable.
-    If 'key' provided, use the element selected from the iterable (dict).
-    NOTE: not useful if we also need to attach other information to returned bin.
-    """
-    alphabin = OrderedDict()
-    if not key:
-        for elem in iterable:
-            c = elem[0].upper()
-            if not c in alphabin:
-                alphabin[c] = c
-            alphabin[c].append(elem)
-    else:
-        for elem in iterable:
-            c = elem[key][0]
-            if not c in alphabin:
-                alphabin[c] = c
-            alphabin[c].append(elem)
-    return alphabin
 
 def acronyms(request, acronym=None):
+    # Query Application.objects.prefetch_related('app_status').\
+    #    values_list('acronym', flat=True).distinct().order_by('acronym') 
+    # took 5.2 seconds.
+    # Query attrs we want and reducing with dicts takes 0.03 seconds, 173x speedup. :-)
     if not acronym:
-        # No improvement with Application.objects.prefetch_related('app_status')....
-        now = time.time()
-        acros = Application.objects.prefetch_related('app_status').values_list('acronym', flat=True).distinct().order_by('acronym')
+        apps = Application.objects.values('acronym', 'app_status__name').order_by('acronym').distinct()
+        acros = OrderedDict()
+        for app in apps:
+            acro = app.pop('acronym')
+            if acro not in acros:
+                acros[acro] = []
+            acros[acro].append(app.pop('app_status__name'))
         alphabin = OrderedDict()
-        for acro in acros:
-            # alphabin them by acronym
+        for acro, statuses in acros.items():
             c = acro[0].upper()
             if c not in alphabin:
                 alphabin[c] = []
-            acro_class = acronym_status_class(acro)
+            if "In Development" in statuses: # prefer to show Development to Current
+                acro_class = BOOTSTRAP_LABEL["In Development"]
+            elif "Current Version" in statuses:
+                acro_class = BOOTSTRAP_LABEL["Current Version"]
+            else:
+                acro_class = ""
             alphabin[c].append((acro, acro_class))
-        logging.info("acronyms delta time=%f" % (time.time() - now)) # about 5.2 seconds
         return render_to_response('application/acronyms.html',
-                                  {'alphabin': alphabin},
+                                  {'alphabin': alphabin,
+                                   'bootstrap_label': BOOTSTRAP_LABEL,
+                                   },
                                   context_instance=RequestContext(request));
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
