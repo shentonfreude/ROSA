@@ -1,4 +1,5 @@
 import logging
+import time
 
 from collections import OrderedDict
 
@@ -23,12 +24,17 @@ BOOTSTRAP_LABEL = {
     "Archived"          : "label",               # gray
     "Cancelled"         : "label label-inverse",   # black
     "Current Version"   : "label label-success",   # green
+    "Current_Version"   : "label label-success",   # green
     "In Development"    : "label label-info",      # blue
+    "In_Development"    : "label label-info",      # blue
     "In Suspense"       : "label label-important", # red
+    "In_Suspense"       : "label label-important", # red
     "Inactive"          : "",
     "Moved"             : "",
     "Prior Version"     : "",
+    "Prior_Version"     : "",
     "Roll Back"         : "",
+    "Roll_Back"         : "",
     "Unassigned"        : "label label-warning",   # yellow
 }
 
@@ -50,35 +56,53 @@ def acronym_status_class(acronym):
 #select distinct acronym, application_appstatus.name from application_application, application_appstatus;
 # select distinct application_appstatus.name from application_application, application_appstatus where acronym="PAVE";
 
+def _alphabin(iterable, key=None):
+    """Return a dict keyed by the first letter of each item in the iterable.
+    If 'key' provided, use the element selected from the iterable (dict).
+    NOTE: not useful if we also need to attach other information to returned bin.
+    """
+    alphabin = OrderedDict()
+    if not key:
+        for elem in iterable:
+            c = elem[0].upper()
+            if not c in alphabin:
+                alphabin[c] = c
+            alphabin[c].append(elem)
+    else:
+        for elem in iterable:
+            c = elem[key][0]
+            if not c in alphabin:
+                alphabin[c] = c
+            alphabin[c].append(elem)
+    return alphabin
+
 def acronyms(request, acronym=None):
     if not acronym:
-        # Can we pull the list of app_status in the same query??
-        acros = Application.objects.values_list('acronym', flat=True).distinct().order_by('acronym')
+        # No improvement with Application.objects.prefetch_related('app_status')....
+        now = time.time()
+        acros = Application.objects.prefetch_related('app_status').values_list('acronym', flat=True).distinct().order_by('acronym')
         alphabin = OrderedDict()
-        #acronym_class = {}
-        for acro in acros:   # without 'flat' values_list list of tuples [(u'AAIS',), (u'ACDS',)]
+        for acro in acros:
             # alphabin them by acronym
-            c = acro[0]
+            c = acro[0].upper()
             if c not in alphabin:
                 alphabin[c] = []
             acro_class = acronym_status_class(acro)
             alphabin[c].append((acro, acro_class))
-
-        ret_dict = {'alphabin': alphabin,
-                    }
+        logging.info("acronyms delta time=%f" % (time.time() - now)) # about 5.2 seconds
         return render_to_response('application/acronyms.html',
-                                  ret_dict,
+                                  {'alphabin': alphabin},
                                   context_instance=RequestContext(request));
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
                               {'object_list': apps},
                               context_instance=RequestContext(request));
 
-def list_apps(request):
-    return render_to_response('list_apps.html',
-                              {'apps': Application.objects.all().order_by('acronym', 'release'),
-                               },
-                              context_instance=RequestContext(request));
+# def list_apps(request):
+#     return render_to_response('list_apps.html',
+#                               {'apps': Application.objects.all().order_by('acronym', 'release'),
+#                                },
+#                               context_instance=RequestContext(request));
 
 def application_versions(request):
     """Return sorted list of Arco and Versions
@@ -86,16 +110,33 @@ def application_versions(request):
     Render like:
     BESS  1.1, 1.2, 2.1
     CATS  2.0, 2.3, 2.4
+    alphabin={'A' : [{'AIIS': {'id': 1, 'release': '3.14', app_status__name='Prior'},
+                              {'id': 2, 'release': '3.15', app_status__name='Current'},
+                      'ARDVARK' : ...,
+                     }],
+              'B' : ...}
+    Doing query for acros, then queries for release status,
+    without prefetch: 2.7 seconds, with: 1.8
+    Doing a single limited query of just the attrs we need: 0.05 seconds.
     """
-    apps = Application.objects.all().order_by('acronym', 'release')
-    appvers = OrderedDict()
+    # Why is this getting a single app_status since it's M2M currently?
+    apps = Application.objects.values('id', 'acronym', 'release', 'app_status__name').order_by('acronym', 'release')
+    acro_vers = OrderedDict()
     for app in apps:
-        acro = app.acronym
-        if not acro in appvers:
-            appvers[acro] = []
-        appvers[acro].append(app)
+        acro = app.pop('acronym')
+        if not acro in acro_vers:
+            acro_vers[acro] = []
+        app['app_class'] = BOOTSTRAP_LABEL.get(app.pop('app_status__name'), '')
+        acro_vers[acro].append(app)
+    alphabin = OrderedDict()
+    for acro, releases in acro_vers.items():
+        c = acro[0].upper()
+        if c not in alphabin:
+            alphabin[c] = []
+        alphabin[c].append((acro, releases))
     return render_to_response('application/application_versions.html',
-                              {'application_versions': appvers
+                              {'bootstrap_label': BOOTSTRAP_LABEL,
+                               'alphabin': alphabin,
                                },
                               context_instance=RequestContext(request));
 

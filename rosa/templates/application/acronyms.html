@@ -2,7 +2,7 @@
 
 {% block leftnav %}
 <li class="nav-header">Quick Jump...</li>
-{% for c, acronyms in alphabin.items %}
+{% for c in alphabin %}
 <li><a href="#{{c}}">{{c}}</a></li>
 {% endfor %}
 {% endblock %}
