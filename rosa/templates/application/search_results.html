@@ -38,7 +38,7 @@
     {% for app in object_list %}
     <tr>
       <td><a href="{% url app_details object_id=app.id %}">{{app.acronym}}</a></td>
-      <td><a href="{% url app_details object_id=app.id %}">{{app.release}}</a></td>
+      <td><a href="{% url app_details object_id=app.id %}">{{app.release|default:"[No#]"}}</a></td>
       <td>{{app.app_name}}</td>
       <td
          {% with status=app.app_status.all|join:"," %}
