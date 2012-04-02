@@ -53,6 +53,7 @@
               <li><a href="{% url search %}">     <i class="icon-white icon-search"></i>    Search</a></li>
               <li><a href="{% url report %}">     <i class="icon-white icon-list-alt"></i>       Report</a></li>
               <li><a href="{% url about %}">   <i class="icon-white icon-info-sign"></i> About</a></li>
+              <li><a href="{% url manage %}">  <i class="icon-white icon-cog"></i>       Manage</a></li>
               <li><a href="#contact">          <i class="icon-white icon-envelope"></i>  Contact</a></li>
               <li><a href="#exit">    <i class="icon-white icon-off"></i>       Exit</a></li>
             </ul>
@@ -74,8 +75,8 @@
                 <input type="text"
                        name="text"
                        title="Enter acronym, name, description text"
-                       style="width:90%" /> {# HACK: what's a better way? #}
-                
+                       class="input-medium search-query"
+                       style="width:70%" /> {# HACK: what's a better way? 90% for normal square box #}
               </form>
               {% endblock %} {# leftnav #}
               {% block leftnav %}

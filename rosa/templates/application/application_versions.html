@@ -43,7 +43,7 @@ color-coded by status:
       <td>
         {% for release in releases %}
         <a class="{{ release.app_class }}"
-           href="{% url app_details release.id %}">{{release.release}}</a>
+           href="{% url app_details release.id %}">{{release.release|default:"[No#]"}}</a>
         {% endfor %}{# release #}
       </td>
     </tr>

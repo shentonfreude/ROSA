@@ -17,7 +17,7 @@
     {% for app in object_list %}
     <tr>
       <td>{{app.acronym}}</td>
-      <td>{{app.release}}</td>
+      <td>{{app.release|default:"[No#]"}}</td>
       <td>{{app.app_name}}</td>
       <td>{{app.description}}</td>
     </tr>

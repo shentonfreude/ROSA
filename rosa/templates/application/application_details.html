@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ROSA: {{app.acronym}} {{app.release}}{% endblock %}
+{% block title %}ROSA: {{app.acronym}} {{app.release|default:"[No#]"}}{% endblock %}
 
 {% block leftnav %}
 <li class="nav-header">Quick jump...</li>
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>Details: {{app.acronym}} {{app.release}}</h1>
+<h1>Details: {{app.acronym}} {{app.release|default:"[No#]"}}</h1>
 
 <div class="row-fluid">
   <div class="span8">
@@ -25,10 +25,10 @@
     {% for release in releases %}
     {% if release.release == app.release %}
     <span class="{{release.app_class}}"
-       href="{% url app_details object_id=release.id %}">{{release.release}}</span>
+       href="{% url app_details object_id=release.id %}">{{release.release|default:"[No#]"}}</span>
     {% else %}
     <a class="{{release.app_class}}"
-       href="{% url app_details object_id=release.id %}">{{release.release}}</a>
+       href="{% url app_details object_id=release.id %}">{{release.release|default:"[No#]"}}</a>
     {% endif %}
     {% endfor %}
   </div>
@@ -58,7 +58,7 @@
     <h2 id="vitals">Vitals</h2>
     <dl>
       <dt>Acronym                     </dt><dd>{{app.acronym                     }}</dd>
-      <dt>Release                     </dt><dd><span class="{{app_class}}">{{app.release                     }}</span></dd>
+      <dt>Release                     </dt><dd><span class="{{app_class}}">{{app.release|default:"[No#]"     }}</span></dd>
     {#<dt>acronymrelease              </dt><dd>{{app.acronymrelease              }}</dd>#}
       <dt>App Status                  </dt><dd><span class="{{app_class}}">{{app.app_status.all|join:", "          }}</span></dd>
       <dt>Release Date                </dt><dd>{{app.release_date|date:"m/d/Y"   }}</dd>
