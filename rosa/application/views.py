@@ -118,10 +118,21 @@ def application_versions(request):
 
 def app_details(request, object_id):
     """Return full application.
-    Shouldn't this be done with Generic View? 
+    Also show all other release versions for context.
     """
+    app = Application.objects.get(pk=object_id)
+    app_class = BOOTSTRAP_LABEL.get(app.app_status.all()[0].name, '') # all()[0] for bogus M2M
+    rels = Application.objects.filter(acronym=app.acronym).values('id', 'release', 'app_status__name').order_by('release').distinct() # worthless 'distinct'
+    releases = []
+    # Is there a away to do this to 'rels' in place, or with a comprehension?
+    for rel in rels:
+        rel.update({'app_class': BOOTSTRAP_LABEL.get(rel.pop('app_status__name'))})
+        releases.append(rel)
     return render_to_response('application/application_details.html',
-                              {'app': Application.objects.get(pk=object_id)
+                              {'app': app,
+                               'app_class': app_class,
+                               'releases': releases,
+                               'bootstrap_label': BOOTSTRAP_LABEL,
                                },
                               context_instance=RequestContext(request));
 
