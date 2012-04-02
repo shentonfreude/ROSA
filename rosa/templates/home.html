@@ -3,10 +3,8 @@
 
 {% block content %}
 <div class="hero-unit">
-  
   <h1><img src="{{STATIC_URL}}img/rose.png"/> ROSA</h1>
-
-  
+  <p>
   The Repository of Supported Applications is a web application for
     browsing and querying information about NASA HQ applications,
     including application description, support team, security
@@ -15,32 +13,26 @@
     applications. Key reports such as the Applications Pipeline and
     Release Planner are available to all authorized users as well as a
     sampling of graphic reports currently provided in the Application
-    Monthly Review (AMR).
+    Monthly Review (AMR).</p>
 </div>
 
-<h2>What's New in ROSA</h2>
-
-<p>Version 2.0 is written from scratch in Django. It uses Twitter
-  Bootstrap for a "responsive" user interface that gracefully resizes
-  for different platforms (desktop, mobile). It uses a serverless
-  database SQLite or the PostgreSQL database.</p>
 
 <h2>How to Use It</h2>
 
-<p>You can <a href="{% url app_versions %}">Browse all applications
-    and their versions</a> or you can <a href="{% url search %}">Search by
-    text</a> in common application attributes.  The links here are the
-  same as those on the top menu bar.</p>
+<p>You can use the search box in the upper left of each page to search for applications by acronym, name, and description (more attributes later).</p>
 
-<h2>Search</h2>
-<p>Get started quickly by entering your search text here.</p>
-<div>
-  <form id="search" method="POST" action="{% url search %}" class="well form-horizontal">{% csrf_token %}
-    {{ form|bootstrap }}
-      </br>
-      <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Search</button>
-  </form>
-</div>
+<p>Use the menu-bar <a href="{% url acronyms %}" class="label label-info">Acronyms</a> to
+browse all the applicaitons by acronym, then drill down to a specific
+one to see an overview of each release.</p>
+
+<p>The <a href="{% url app_versions %}" class="label label-info">All Versions</a> menu-bar item
+displays an overview of all applications and all their versions,
+color-coded by the status of the release.</p>
+
+<p>The menu-bar <a href="{% url search %}" class="label label-info">Search</a> button will
+eventually offer a sophisticated interface for complex queries, but
+for now duplicates the quick search box in the upper left of ever
+page.</p>
 
 {% endblock %}
 

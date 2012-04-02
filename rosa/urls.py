@@ -1,13 +1,15 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.views.generic.simple import direct_to_template
-from application.views import home
+#from application.views import home
+from views import home, about
 
 admin.autodiscover()
 
 urlpatterns = patterns(
     '',
     url(r'^$',       home, name='home'),
+    url(r'^about$',  about, name='about'),
     # url(r'^help$', direct_to_template, {'template': 'help.html'}, name='help'),
 
     url(r'^application/', include('application.urls')),

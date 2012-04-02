@@ -20,15 +20,6 @@ class SearchForm(Form):
     text   = CharField(max_length=80, required=True)
 
 
-def home(request):
-    """Show Hero logo and provide a search box for convenience.
-    """
-    return render_to_response('home.html',
-                              {'form': SearchForm(),
-                               },
-                              context_instance=RequestContext(request));
-
-
 def acronyms(request, acronym=None):
     if not acronym:
         acros = Application.objects.values('acronym').distinct().order_by('acronym')
@@ -43,7 +34,6 @@ def acronyms(request, acronym=None):
                                   {'object_list': acros,
                                    'alphabin': alphabin},
                                   context_instance=RequestContext(request));
-    
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
                               {'object_list': apps},
