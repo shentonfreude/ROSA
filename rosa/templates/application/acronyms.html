@@ -10,12 +10,21 @@
 {% block content %}
 <h1>Application Acronyms</h1>
 
+<p>Acronyms for each application are provided below; selecting one will show an overview of all releases for that application.</p>
+
+<p>Color labels indicate whether an app has is 
+  <span class="label label-info">In Development</span>
+  (preferred), or
+  <span class="label label-success">Current Version</span>
+  (not shown if there's also a Development version).
+</p>
+
 {% for c, acronyms in alphabin.items %}
 <a name="{{c}}"><h2>{{c}}</h2></a>
 <p>
-  {% for acronym in acronyms %}
-  <a class="label label-info"
-     href="{% url acronyms acronym=acronym.acronym|urlencode %}">{{acronym.acronym}}</a>
+  {% for acronym, acronym_class in acronyms %}
+  <a class="{{acronym_class}}"
+     href="{% url acronyms acronym=acronym|urlencode %}">{{acronym}}</a>
   {# &nbsp;&nbsp;   How can I put more space between these, or separate them? #}
   {% endfor %}
 </p>

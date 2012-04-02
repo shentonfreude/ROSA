@@ -19,20 +19,55 @@ logging.basicConfig(level=logging.INFO)
 class SearchForm(Form):
     text   = CharField(max_length=80, required=True)
 
+BOOTSTRAP_LABEL = {
+    "Archived"          : "label",               # gray
+    "Cancelled"         : "label label-inverse",   # black
+    "Current Version"   : "label label-success",   # green
+    "In Development"    : "label label-info",      # blue
+    "In Suspense"       : "label label-important", # red
+    "Inactive"          : "",
+    "Moved"             : "",
+    "Prior Version"     : "",
+    "Roll Back"         : "",
+    "Unassigned"        : "label label-warning",   # yellow
+}
+
+def acronym_status_class(acronym):
+    """Return Bootstrap color coded class name based on acronym.
+    The different releases of an acronym will have different app_status,
+    and we prefer to show Development to Current.
+    """
+    statuses = Application.objects.filter(acronym=acronym).values_list('app_status__name', flat=True).distinct()
+    if "In Development" in statuses: # prefer to show Development to Current
+        return BOOTSTRAP_LABEL["In Development"]
+    elif "Current Version" in statuses:
+        return BOOTSTRAP_LABEL["Current Version"]
+    else:
+        return ""
+
+# Try improving speed with Applicaiton.objects.prefetch_related()
+
+#select distinct acronym, application_appstatus.name from application_application, application_appstatus;
+# select distinct application_appstatus.name from application_application, application_appstatus where acronym="PAVE";
 
 def acronyms(request, acronym=None):
     if not acronym:
-        acros = Application.objects.values('acronym').distinct().order_by('acronym')
-        # alphabin them by acronym
+        # Can we pull the list of app_status in the same query??
+        acros = Application.objects.values_list('acronym', flat=True).distinct().order_by('acronym')
         alphabin = OrderedDict()
-        for acro in acros:
-            c = acro['acronym'][0]
+        #acronym_class = {}
+        for acro in acros:   # without 'flat' values_list list of tuples [(u'AAIS',), (u'ACDS',)]
+            # alphabin them by acronym
+            c = acro[0]
             if c not in alphabin:
                 alphabin[c] = []
-            alphabin[c].append(acro)
+            acro_class = acronym_status_class(acro)
+            alphabin[c].append((acro, acro_class))
+
+        ret_dict = {'alphabin': alphabin,
+                    }
         return render_to_response('application/acronyms.html',
-                                  {'object_list': acros,
-                                   'alphabin': alphabin},
+                                  ret_dict,
                                   context_instance=RequestContext(request));
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
