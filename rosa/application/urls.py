@@ -13,9 +13,7 @@ applications = {
 
 urlpatterns = patterns(
     '',
-    url(r'^$',                  list_detail.object_list, applications, name='list_apps'),
-
-    url(r'^all$',               application_versions, name='app_versions'),
+    url(r'^$',               application_versions, name='app_versions'),
 
     url(r'^acronym/$',            acronyms, name='acronyms'),
     url(r'^acronym/(?P<acronym>.+)$',            acronyms, name='acronyms'),
