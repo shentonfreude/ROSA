@@ -242,7 +242,6 @@ class Application(Model):
     def __unicode__(self):
         return u'%s-%s' % (self.acronym, self.release)
 
-
 # class Document(Model):
 #     pass
 

@@ -63,7 +63,110 @@ admin.site.register(SrClass)
 admin.site.register(SupportStatus)
 admin.site.register(SwLanguage)
 admin.site.register(TriageLevel)
-admin.site.register(Application)
 #admin.site.register(Document)
 #admin.site.register(Source)
 
+class ApplicationAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Essential',   {'fields': ('acronym',
+                                    'app_name',
+                                    'release')
+                         }),
+        ('Vitals',      {'fields' : ('app_status',
+                                     'release_date',
+                                     'release_status')
+                         }),
+        ('Overview',    {'fields': ('description',
+                                    'release_change_description',
+                                    'release_notes'),
+                         'classes': ('collapse',)
+                         }),
+        ('Details', {'fields': ('app_status_comments',
+                                'functional_type',
+                                'app_type',
+                                'software_category',
+                                'architecture_type',
+                                'app_usage',
+                                'app_users_num',
+                                'frequency',
+                                'browser_support',
+                                'html_link',
+                                'support_status',
+                                'sw_language',
+                                'triage_level'),
+                     'classes': ('collapse',)
+                     }),
+        ('Personnel', {'fields': ('owner',
+                                  'owner_org',
+                                  'owner_org_name',
+                                  'nasa_off_name',
+                                  'nasa_requester',
+                                  'gots_poc',
+                                  'manager_app_development',
+                                  'manager_project',
+                                  'managed_records',
+                                  'dev_name_primary',
+                                  'dev_name_alternate'),
+                       'classes': ('collapse',)
+                       }),
+
+        ('Systems',     {'fields': ('internal_system',
+                                    'location',
+                                    'dbms_name',
+                                    'network_services_used',
+                                    'server_app_name',
+                                    'server_db_name',
+                                    'server_report_name',
+                                    ),
+                         'classes': ('collapse',)
+                         }),
+        ('Interfaces',  {'fields': ('acronym_interface',
+                                    'acronym_inter_direction',
+                                    'acronym_inter_method',
+                                    ),
+                         'classes': ('collapse',)
+                         }),
+        ('Security',    {'fields': ('security_itcd_owner',
+                                    'security_pii_indicator',
+                                    'security_pii_type',
+                                    'security_sensitivity',
+                                    'authentication_type',
+                                    'bia_category',
+                                    'fips_info_category',
+                                    'firewall_factor',
+                                    'privacy_act',
+                                    'sec_plan_number',
+                                    'ssn_system',
+                                    ),
+                         'classes': ('collapse',)
+                         }),
+        ('Certification',       {'fields': ('awrs_checklist',
+                                            'awrs_indicator',
+                                            'fed_record_qualification',
+                                            'fed_registy',
+                                            'hitss_supported',
+                                            'section2810compliant',
+                                            'section508complaint',
+                                            ),
+                                 'classes': ('collapse',)
+                                 }),
+        ('Process',             {'fields': ('sr_class',
+                                            'sr_number',
+                                            'sr_task_order',
+                                            'cm_resubmit_date',
+                                            'cm_entered_time',
+                                            're_entered_time',
+                                            ),
+                                 'classes': ('collapse',)
+                                 }),
+        ('TBD',                 {'fields': ('nrrs_disposition',
+                                            'nrrs_schedule_item',
+                                            'pk_doc_number',
+                                            'sorn',
+                                            ),
+                                 'classes': ('collapse',)
+                                 }),
+        )
+
+
+admin.site.register(Application, ApplicationAdmin)
