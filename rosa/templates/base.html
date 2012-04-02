@@ -67,13 +67,18 @@
         <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
+              {% block leftsearch %}
+              <li class="nav-header">Search <i class="icon icon-search"></i></li>
+              <form action="{% url search %}" method="POST">
+                {% csrf_token %}
+                <input type="text"
+                       name="text"
+                       title="Enter acronym, name, description text"
+                       style="width:90%" /> {# HACK: what's a better way? #}
+                
+              </form>
+              {% endblock %} {# leftnav #}
               {% block leftnav %}
-              <li class="nav-header">NASA HQ</li>
-              <li><a href="#">Thing1</a></li>
-              <li><a href="#">Thing2</a></li>
-              <li class="nav-header">NASA</li>
-              <li><a href="#">Thing1</a></li>
-              <li><a href="#">Thing2</a></li>
               {% endblock %} {# leftnav #}
             </ul>
           </div><!--/.well -->
