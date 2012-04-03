@@ -41,14 +41,25 @@ BOOTSTRAP_LABEL = {                                # underscore names for templa
 # TODO: memoize this
 def _search_suggestions():
     """Provide suggestions to the search box.
+    Takes 0.06 seconds for this query and reduction.
     TODO: provide this on *every* view since the box is there.
     How to pull this request from Django template?
     """
-    acros = Application.objects.values_list('acronym', flat=True).order_by('acronym').distinct()
-    acros = [acro for acro in acros]
-    acros = json.dumps(acros)
-    import pdb; pdb.set_trace()
-    return acros
+    now = time.time()
+    words_q = Application.objects.values('acronym',
+                                       'owner', 'owner_org',
+                                       'nasa_off_name', 'nasa_requester',
+                                       'manager_app_development', 'manager_project',
+                                       'dev_name_primary', 'dev_name_alternate').distinct()
+    wordset = set()
+    for worddict in words_q:
+        vals = worddict.values()
+        for val in vals:
+            wordset.add(val)
+    words = [word for word in wordset if word]
+    words.sort()
+    logging.info("search_suggestions len=%d time=%f" % (len(words), time.time() - now))
+    return json.dumps(words)
 
 
 def acronyms(request, acronym=None):
@@ -79,12 +90,14 @@ def acronyms(request, acronym=None):
         return render_to_response('application/acronyms.html',
                                   {'alphabin': alphabin,
                                    'bootstrap_label': BOOTSTRAP_LABEL,
+                                   'search_suggestions': _search_suggestions(),
                                    },
                                   context_instance=RequestContext(request));
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
                               {'object_list': apps,
                                'bootstrap_label': BOOTSTRAP_LABEL,
+                               'search_suggestions': _search_suggestions(),
                                },
                               context_instance=RequestContext(request));
 
@@ -127,6 +140,7 @@ def application_versions(request):
     return render_to_response('application/application_versions.html',
                               {'bootstrap_label': BOOTSTRAP_LABEL,
                                'alphabin': alphabin,
+                               'search_suggestions': _search_suggestions(),
                                },
                               context_instance=RequestContext(request));
 
@@ -147,6 +161,7 @@ def app_details(request, object_id):
                                'app_class': app_class,
                                'releases': releases,
                                'bootstrap_label': BOOTSTRAP_LABEL,
+                               'search_suggestions': _search_suggestions(),
                                },
                               context_instance=RequestContext(request));
 
@@ -175,12 +190,15 @@ def search(request):
             return render_to_response('application/search_results.html',
                                       {'object_list': apps,
                                        'bootstrap_label': BOOTSTRAP_LABEL,
+                                       'search_suggestions': _search_suggestions(),
                                        },
                                       context_instance=RequestContext(request));
     else:
         form = SearchForm()
     return render_to_response('application/search.html',
-                              {'form': form},
+                              {'form': form,
+                               'search_suggestions': _search_suggestions(),
+                               },
                               context_instance=RequestContext(request));
 
 
@@ -188,6 +206,8 @@ def report(request):
     """Show page offering different reports. Boring.
     """
     return render_to_response('application/report.html',
+                              {'search_suggestions': _search_suggestions(),
+                               },
                               context_instance=RequestContext(request));
 
 def report_current(request):
@@ -195,7 +215,9 @@ def report_current(request):
     """
     apps = Application.objects.filter(app_status__name__icontains='Current').order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
-                              {'object_list': apps},
+                              {'object_list': apps,
+                               'search_suggestions': _search_suggestions(),
+                               },
                               context_instance=RequestContext(request));
 
 def report_development(request):
@@ -203,5 +225,7 @@ def report_development(request):
     """
     apps = Application.objects.filter(app_status__name__icontains='Development').order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
-                              {'object_list': apps},
+                              {'object_list': apps,
+                               'search_suggestions': _search_suggestions(),
+                               },
                               context_instance=RequestContext(request));

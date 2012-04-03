@@ -28,6 +28,8 @@ def about(request):
     """Show About info and What's New.
     """
     return render_to_response('about.html',
+                              {'search_suggestions': _search_suggestions(),
+                               },
                               context_instance=RequestContext(request));
 
 
