@@ -1,6 +1,6 @@
 import logging
 import time
-
+import json
 from collections import OrderedDict
 
 from django.core.context_processors import csrf
@@ -37,6 +37,18 @@ BOOTSTRAP_LABEL = {                                # underscore names for templa
     "Roll_Back"         : "",
     "Unassigned"        : "label label-warning",   # yellow
 }
+
+# TODO: memoize this
+def _search_suggestions():
+    """Provide suggestions to the search box.
+    TODO: provide this on *every* view since the box is there.
+    How to pull this request from Django template?
+    """
+    acros = Application.objects.values_list('acronym', flat=True).order_by('acronym').distinct()
+    acros = [acro for acro in acros]
+    acros = json.dumps(acros)
+    import pdb; pdb.set_trace()
+    return acros
 
 
 def acronyms(request, acronym=None):
@@ -151,6 +163,14 @@ def search(request):
             q = Q(acronym__icontains=text)
             q = q | Q(app_name__icontains=text)
             q = q | Q(description__icontains=text)
+            q = q | Q(owner__icontains=text)
+            q = q | Q(owner_org__icontains=text)
+            q = q | Q(nasa_off_name__icontains=text)
+            q = q | Q(nasa_requester__icontains=text)
+            q = q | Q(manager_app_development__icontains=text)
+            q = q | Q(manager_project__icontains=text)
+            q = q | Q(dev_name_primary__icontains=text)
+            q = q | Q(dev_name_alternate__icontains=text)
             apps = Application.objects.filter(q).order_by('acronym', 'release')
             return render_to_response('application/search_results.html',
                                       {'object_list': apps,
