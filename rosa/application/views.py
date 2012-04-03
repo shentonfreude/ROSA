@@ -47,10 +47,10 @@ def _search_suggestions():
     """
     now = time.time()
     words_q = Application.objects.values('acronym',
-                                       'owner', 'owner_org',
-                                       'nasa_off_name', 'nasa_requester',
-                                       'manager_app_development', 'manager_project',
-                                       'dev_name_primary', 'dev_name_alternate').distinct()
+                                         'owner', 'owner_org',
+                                         'nasa_off_name', 'nasa_requester',
+                                         'manager_app_development', 'manager_project',
+                                         'dev_name_primary', 'dev_name_alternate').distinct()
     wordset = set()
     for worddict in words_q:
         vals = worddict.values()
@@ -229,3 +229,22 @@ def report_development(request):
                                'search_suggestions': _search_suggestions(),
                                },
                               context_instance=RequestContext(request));
+
+def report_development(request):
+    """Actual, Projected, In-Suspense and TBD [wtf?]"
+    rel date, release, acro, sr#, org acro, nasa requester, change description
+    TODO: don't understand the status selection meanings above. Our choices:
+    Cancelled, Archived, Prior Version, Current Version, Moved, Inactive,
+    Roll Back, In Suspense, Unassigned, In Development.
+    """
+    q =     Q(app_status__name__iequals='Current Version') # actual?
+    q = q | Q(app_status__name__iequals='In Development')  # projected?
+    q = q | Q(app_status__name__iequals='In Suspense')     # supense
+    q = q | Q(app_status__name__iequals='Unassigned')      # TBD?
+    apps = Application.objects.filter(q).values('release_date', 'release', 'acronym', 'sr_number', 'owner_org', 'nasa_requester', 'release_change_description', 'app_status__name').order_by('release_date', 'acronym', 'release')
+    return render_to_response('report/app_pipeline_abbrev.html',
+                              {'object_list': apps,
+                               'search_suggestions': _search_suggestions(),
+                               },
+                              context_instance=RequestContext(request));
+
