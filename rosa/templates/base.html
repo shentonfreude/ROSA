@@ -70,7 +70,6 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               {% block leftsearch %}
-              <li class="nav-header">Search <i class="icon icon-search"></i></li>
               <form action="{% url search %}" method="POST">
                 {% csrf_token %}
                 <input id="searchbox"
@@ -78,8 +77,10 @@
                        type="text"
                        name="text"
                        class="input-medium search-query"
-                       placeholder="acronym, name, ..."
+                       placeholder="acronym, person, name, description, ..."
                        style="width:70%" /> {# HACK: what's a better way? 90% for normal square box #}
+                <br/>
+                <button type="submit" class="btn">Quick Search <i class="icon icon-search"></i></button>
               </form>
               {% endblock %} {# leftnav #}
               {% block leftnav %}
