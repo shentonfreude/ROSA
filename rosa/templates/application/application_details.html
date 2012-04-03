@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ROSA: {{app.acronym}} {{app.release|default:"[No#]"}}{% endblock %}
+{% block title %}{{app.acronym}} {{app.release|default:"[No#]"}} [ROSA]{% endblock %}
 
 {% block leftnav %}
 <li class="nav-header">Quick jump...</li>
@@ -19,7 +19,7 @@
 {% block content %}
 <h1>Details: {{app.acronym}} {{app.release|default:"[No#]"}}</h1>
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span8">
     <h2 id="allreleases">All Releases</h2>
     {% for release in releases %}
@@ -44,7 +44,7 @@
 </div>
 
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span8">
     <h2 id=="overview">Overview</h2>
     <dl>
@@ -67,7 +67,7 @@
   </div>
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span6">
     <h2 id="details">Details</h2>
     <dl>
@@ -105,7 +105,7 @@
 </div>
 
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span6">
     <h2 id="systems">Systems</h2>
     <dl>
@@ -128,7 +128,7 @@
   </div>
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span6">
     <h2 id="security">Security</h2>
     <dl>
@@ -159,7 +159,7 @@
   </div>
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid well">
   <div class="span6">
     <h2 id="process">Process</h2>
     <dl>

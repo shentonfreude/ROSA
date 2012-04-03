@@ -71,7 +71,9 @@ def acronyms(request, acronym=None):
                                   context_instance=RequestContext(request));
     apps = Application.objects.filter(acronym__iexact=acronym).order_by('acronym', 'release')
     return render_to_response('application/search_results.html',
-                              {'object_list': apps},
+                              {'object_list': apps,
+                               'bootstrap_label': BOOTSTRAP_LABEL,
+                               },
                               context_instance=RequestContext(request));
 
 # def list_apps(request):
@@ -151,7 +153,9 @@ def search(request):
             q = q | Q(description__icontains=text)
             apps = Application.objects.filter(q).order_by('acronym', 'release')
             return render_to_response('application/search_results.html',
-                                      {'object_list': apps},
+                                      {'object_list': apps,
+                                       'bootstrap_label': BOOTSTRAP_LABEL,
+                                       },
                                       context_instance=RequestContext(request));
     else:
         form = SearchForm()
