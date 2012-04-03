@@ -78,16 +78,30 @@ def app_pipeline_full(request):
       Cancelled, Archived, Prior Version, Current Version, Moved, Inactive,
       Roll Back, In Suspense, Unassigned, In Development.
     TODO: live server takes a from/two date
+    TODO: use this query for _full and _abbrev report,
+    just render with different templates
     """
     q =     Q(app_status__name__iexact='Current Version') # actual?
     q = q | Q(app_status__name__iexact='In Development')  # projected?
     q = q | Q(app_status__name__iexact='In Suspense')     # supense
     q = q | Q(app_status__name__iexact='Unassigned')      # TBD?
     apps = Application.objects.filter(q).values(
-        'id', 'release_date', 'release', 'acronym', 'sr_number', 'owner_org',
-        'nasa_requester', 'release_change_description',
-        'sr_task_order', 'software_category__name', 'sr_class__name', 'app_name',
-        'architecture_type', 'app_status__name',
+        # correct attrs above
+        'id',
+        'release_date',
+        'release',
+        'acronym',
+        'sr_number',
+        'owner_org',
+        'nasa_requester',
+        'release_change_description',
+        # above in abbrev report too
+        'sr_task_order',
+        'functional_type__name', # Finance, Acct
+        'software_category__name', # F
+        'app_name',
+        'architecture_type__name',    # web app, TODO multivalued fails?
+        'app_status__name',
         ).order_by('release_date', 'acronym', 'release')
     # TODO maybe inject app_class into results since
     # we can't deref by app.app_status__name there?
@@ -97,3 +111,31 @@ def app_pipeline_full(request):
                                },
                               context_instance=RequestContext(request));
 
+def current_dev_by_acronym(request):
+    q =     Q(app_status__name__iexact='Current Version') # actual?
+    q = q | Q(app_status__name__iexact='In Development')  # projected?
+    apps = Application.objects.filter(q).values(
+        'id',
+        'functional_type__name', # here only,shown as appliation category TODO others too?
+        'software_category__name',
+        'acronym',
+        'app_name',
+        'release',
+        'app_status__name',
+        'release_date',
+        'sr_task_order',
+        'owner_org',
+        'nasa_requester',
+        'sr_number',
+        # Not used by this template, but in full report
+        # 'sr_class__name',
+        # 'release_change_description',
+        # 'architecture_type',
+        ).order_by('acronym', 'release') # diff order than Full pipe
+    # TODO maybe inject app_class into results since
+    # we can't deref by app.app_status__name there?
+    return render_to_response('report/current_dev_by_acronym.html',
+                              {'object_list': apps,
+                               'search_suggestions': _search_suggestions(),
+                               },
+                              context_instance=RequestContext(request));

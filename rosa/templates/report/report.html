@@ -5,10 +5,12 @@
 
 <p>Select a report to run from the links below</p>
 <ul>
-  <li><a href="{% url report_current %}">Current apps</a></li>
-  <li><a href="{% url report_development %}">In Development apps</a></li>
+  {# Don't confuse the rubes #}
+  {# <li><a href="{% url report_current %}">Current apps</a></li> #}
+  {# <li><a href="{% url report_development %}">In Development apps</a></li> #}
   <li><a href="{% url report_app_pipeline_abbrev %}">Appliation Pipeline (Abbreviated)</a></li>
   <li><a href="{% url report_app_pipeline_full %}">Appliation Pipeline (Full)</a></li>
+  <li><a href="{% url report_current_dev_by_acronym %}">All Current and In Development by Acronym</a></li>
 </ul>
 
 {% endblock %}

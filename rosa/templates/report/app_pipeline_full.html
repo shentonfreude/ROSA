@@ -29,7 +29,7 @@ releases, or on a Release number to go to a details page.</p>
       <th>Version Number</th>
       <th>Acronym</th>
       <th>SR#</th>
-      <th>Org Acronym
+      <th>Org Acronym</th>
       <th>NASA Requester</th>
       <th>New Version Change Description</th>
 
@@ -52,11 +52,13 @@ releases, or on a Release number to go to a details page.</p>
       <td>{{app.owner_org}}</td>
       <td>{{app.nasa_requester}}</td>
       <td>{{app.release_change_description}}</td>
+      {# above same as abbrev #}
       <td>{{app.sr_task_order}}</td>
+      <td>{{app.functional_type__name}}</td>
       <td>{{app.software_category__name}}</td>
-      <td>{{app.sr_class__name}}</td>
       <td>{{app.app_name}}</td>
-      <td>{{app.architecure_type}}</td>
+
+      <td>{{app.architecture_type__name}}</td> {# web app #}
       <td>{{app.app_status__name}}</td>
     </tr>
     {% endfor %}

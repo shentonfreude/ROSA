@@ -4,7 +4,7 @@ from django.views.generic import list_detail
 from application.models import Application
 #from views import acronyms, application_versions, app_details, search
 from views import report, current, development
-from views import app_pipeline_abbrev, app_pipeline_full
+from views import app_pipeline_abbrev, app_pipeline_full, current_dev_by_acronym
 
 
 urlpatterns = patterns(
@@ -16,5 +16,6 @@ urlpatterns = patterns(
 
     url(r'^app_pipeline_abbrev$',       app_pipeline_abbrev,    name='report_app_pipeline_abbrev'),
     url(r'^app_pipeline_full$',         app_pipeline_full,      name='report_app_pipeline_full'),
+    url(r'^current_dev_by_acronym$',    current_dev_by_acronym, name='report_current_dev_by_acronym'),
 )
 

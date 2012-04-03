@@ -10,11 +10,11 @@
 </script>
 {% endblock %}
 
-{% block title %}Application Pipeline (Abbreviated) [ROSA]{% endblock %}
+{% block title %}Current, Development by Acronym (Full) [ROSA]{% endblock %}
 
 {% block content %}
 
-<h1>Application Pipeline (Abbreviated) ({{ object_list|length }})</h1>
+<h1>All Current and In Devlopment Releases by Acronym ({{ object_list|length }})</h1>
 
 <p>You can click on an Acronym to go to an overview page of various
 releases, or on a Release number to go to a details page.</p>
@@ -25,28 +25,35 @@ releases, or on a Release number to go to a details page.</p>
 
   <thead>
     <tr>
-      <th>Release Date</th>
-      <th>Version Number</th>
+      <th>Application Category</th>
+      <th>Software Class</th>
       <th>Acronym</th>
-      <th>SR#</th>
+      <th>System Name</th>
+      <th>Version Number</th>
+      <th>Status</th>
+      <th>Release Date</th>
+      <th>Task Order</th>
       <th>Org Acronym</th>
       <th>NASA Requester</th>
-      <th>New Version Change Description</th>
-      <th>Status</th>
+      <th>SR#</th>
+      {# no NASA Requester, SR#  from 'full' here #}
     </tr>
   </thead>
 
   <tbody>
     {% for app in object_list %}
     <tr>
-      <td>{{app.release_date|date:"m/d/Y"}}</td>
-      <td><a href="{% url app_details object_id=app.id %}">{{app.release|default:"[No#]"}}</a></td>
+      <td>{{app.functional_type__name}}</td>
+      <td>{{app.software_category__name}}</td>
       <td><a href="{% url acronyms acronym=app.acronym %}">{{app.acronym}}</a></td>
-      <td>{{app.sr_number}}</td>
+      <td>{{app.app_name}}</td>
+      <td><a href="{% url app_details object_id=app.id %}">{{app.release|default:"[No#]"}}</a></td>
+      <td>{{app.app_status__name}}</td>
+      <td>{{app.release_date|date:"m/d/Y"}}</td>
+      <td>{{app.sr_task_order}}</td>
       <td>{{app.owner_org}}</td>
       <td>{{app.nasa_requester}}</td>
-      <td>{{app.release_change_description}}</td>
-      <td>{{app.app_status__name}}</td>
+      <td>{{app.sr_number}}</td>
     </tr>
     {% endfor %}
 
