@@ -86,7 +86,6 @@ def app_pipeline_full(request):
     q = q | Q(app_status__name__iexact='In Suspense')     # supense
     q = q | Q(app_status__name__iexact='Unassigned')      # TBD?
     apps = Application.objects.filter(q).values(
-        # correct attrs above
         'id',
         'release_date',
         'release',
@@ -135,6 +134,40 @@ def current_dev_by_acronym(request):
     # TODO maybe inject app_class into results since
     # we can't deref by app.app_status__name there?
     return render_to_response('report/current_dev_by_acronym.html',
+                              {'object_list': apps,
+                               'search_suggestions': _search_suggestions(),
+                               },
+                              context_instance=RequestContext(request));
+
+def cosa(request):
+    """A page of full details for every app with support_status in CUSTOM and MOTS.
+    Hans says ROSA gets this wrong as it only looks for CUSTOM.
+    SupportStatus: Custom, CUSTOM, GOTS, COTS, MOTS, Unassigned.
+    TODO: is there an 'in' query selector?
+    TODO: print css for one-page-per-app.
+    """
+    q =     Q(support_status__name__iexact='CUSTOM')
+    q = q | Q(support_status__name__iexact='MOTS')
+    apps = Application.objects.filter(q).values(
+        'id',
+        'release_date',
+        'release',
+        'acronym',
+        'sr_number',
+        'owner_org',
+        'nasa_requester',
+        'release_change_description',
+        # above in abbrev report too
+        'sr_task_order',
+        'functional_type__name', # Finance, Acct
+        'software_category__name', # F
+        'app_name',
+        'architecture_type__name',    # web app, TODO multivalued fails?
+        'app_status__name',
+        ).order_by('release_date', 'acronym', 'release')
+    # TODO maybe inject app_class into results since
+    # we can't deref by app.app_status__name there?
+    return render_to_response('report/cosa.html',
                               {'object_list': apps,
                                'search_suggestions': _search_suggestions(),
                                },
