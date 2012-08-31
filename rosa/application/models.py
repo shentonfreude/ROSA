@@ -7,152 +7,152 @@ from django.db.models import NullBooleanField, CharField, DateField, TimeField, 
 # TODO: we shouldn't allow Null or Empty names?
 
 class AppStatus(Model):              # M2M
-    name = CharField(max_length=64, blank=True) ##Archived, Cancelled, Current Version, ...
+    name = CharField(max_length=128, blank=True) ##Archived, Cancelled, Current Version, ...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class AppType(Model):              # M2M
-    name = CharField(max_length=64, blank=True) ##Application, General Support System, Major Application, ...
+    name = CharField(max_length=128, blank=True) ##Application, General Support System, Major Application, ...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class AppUsage(Model):             # M2M
-    name = CharField(max_length=64, blank=True) ##Agency-Wide, HQ-Wide, Multiple Org, ...
+    name = CharField(max_length=128, blank=True) ##Agency-Wide, HQ-Wide, Multiple Org, ...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class ArchitectureType(Model):     # M2M
-    name = CharField(max_length=64, blank=True) ##C/S, C/S and Web App, M/F, Web App, ...
+    name = CharField(max_length=128, blank=True) ##C/S, C/S and Web App, M/F, Web App, ...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class AuthenticationType(Model):   # M2M
-    name = CharField(max_length=64, blank=True) ##Active Directory, ID/PW Only, ID/PW and Token, ...
+    name = CharField(max_length=128, blank=True) ##Active Directory, ID/PW Only, ID/PW and Token, ...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class BiaCategory(Model):          # FK
-    name = CharField(max_length=64, blank=True) ## ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
+    name = CharField(max_length=128, blank=True) ## ['High', 'Low', 'Moderate', 'Not Applicable', 'Unassigned']
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class BrowserSupport(Model):       # M2M
-    name = CharField(max_length=64, blank=True) ##IE, MOZILLA, Mozilla, STANDARD WEB BROWSER
+    name = CharField(max_length=128, blank=True) ##IE, MOZILLA, Mozilla, STANDARD WEB BROWSER
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class DbmsName(Model):       # M2M
-    name = CharField(max_length=64, blank=True) #
+    name = CharField(max_length=128, blank=True) #
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class FipsInfoCategory(Model):     # FK
-    name = CharField(max_length=64, blank=True) ## ['Low', 'Medium', 'Moderate', 'Moderate: D.20.1, C.3.5.1'...]
+    name = CharField(max_length=128, blank=True) ## ['Low', 'Medium', 'Moderate', 'Moderate: D.20.1, C.3.5.1'...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class Frequency(Model):            # FK
-    name = CharField(max_length=64, blank=True) ## ['ANNUALLY', 'AS NEEDED','DAILY', 'Monthly'...]
+    name = CharField(max_length=128, blank=True) ## ['ANNUALLY', 'AS NEEDED','DAILY', 'Monthly'...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class FunctionalType(Model):       # M2M
-    name = CharField(max_length=64, blank=True) ##Acct,Budget,DMS,Finance,GENERAL ADMIN
+    name = CharField(max_length=128, blank=True) ##Acct,Budget,DMS,Finance,GENERAL ADMIN
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class GotsPoc(Model):              # FK
-    name = CharField(max_length=64, blank=True) ## ['Beverly Smith', 'DCAA', 'DOI NBC', ...]
+    name = CharField(max_length=128, blank=True) ## ['Beverly Smith', 'DCAA', 'DOI NBC', ...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class InternalSystem(Model):       # FK
-    name = CharField(max_length=64, blank=True) ## [None, 'E', 'I', 'Not Applicable', 'Unassigned']
+    name = CharField(max_length=128, blank=True) ## [None, 'E', 'I', 'Not Applicable', 'Unassigned']
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class Location(Model):             # M2M
-    name = CharField(max_length=64, blank=True) ##GSFC,MSFC,NACC-CPO,NASA HQ Hosted,NASA Portal,...
+    name = CharField(max_length=128, blank=True) ##GSFC,MSFC,NACC-CPO,NASA HQ Hosted,NASA Portal,...
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class ManagedRecords(Model):       # FK
-    name = CharField(max_length=64, blank=True) ## [None, 'C', 'CS', 'Unassigned']
+    name = CharField(max_length=128, blank=True) ## [None, 'C', 'CS', 'Unassigned']
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class NetworkServicesUsed(Model):  # M2M
-    name = CharField(max_length=64, blank=True) ##Extranet,Intranet
+    name = CharField(max_length=128, blank=True) ##Extranet,Intranet
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class ReleaseStatus(Model):        # FK
-    name = CharField(max_length=64, blank=True) ## ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
+    name = CharField(max_length=128, blank=True) ## ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SecPlanNumber(Model):        # FK
-    name = CharField(max_length=64, blank=True) ## [' 20090812', '0A-801-M-NHQ-0001', '20090812',...]
+    name = CharField(max_length=128, blank=True) ## [' 20090812', '0A-801-M-NHQ-0001', '20090812',...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class Section2810Compliant(Model): # FK
-    name = CharField(max_length=64, blank=True) ## ['No', 'Not Applicable', 'Partial', 'Unassigned', 'Yes']
+    name = CharField(max_length=128, blank=True) ## ['No', 'Not Applicable', 'Partial', 'Unassigned', 'Yes']
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SecurityItcdOwner(Model):    # FK
-    name = CharField(max_length=64, blank=True, null=True) ## ['ANDREW BONCEK', 'ANDY BONCEK', 'Andrew Boncek',...]
+    name = CharField(max_length=128, blank=True, null=True) ## ['ANDREW BONCEK', 'ANDY BONCEK', 'Andrew Boncek',...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SecurityPiiIndicator(Model): # M2M
-    name = CharField(max_length=64, blank=True) ##TOO MANY=51
+    name = CharField(max_length=128, blank=True) ##TOO MANY=51
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SecuritySensitivity(Model):  # FK
-    name = CharField(max_length=64, blank=True) ## [BIA info Category = ADM-Administrative','FOIA Exempt',...]
+    name = CharField(max_length=128, blank=True) ## [BIA info Category = ADM-Administrative','FOIA Exempt',...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class ServerDbName(Model):         # M2M
-    name = CharField(max_length=64, blank=True) ##TOO MANY=81
+    name = CharField(max_length=128, blank=True) ##TOO MANY=81
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class ServerReportName(Model):     # FK
-    name = CharField(max_length=64, blank=True) ## ['CASPIAN', 'DRAGONOV', 'HQDATA1 Server', ...]
+    name = CharField(max_length=128, blank=True) ## ['CASPIAN', 'DRAGONOV', 'HQDATA1 Server', ...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SoftwareCategory(Model):     # M2M
-    name = CharField(max_length=64, blank=True) ##A,B,C,D,E,F,G,H
+    name = CharField(max_length=128, blank=True) ##A,B,C,D,E,F,G,H
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class Sorn(Model):                 # FK
-    name = CharField(max_length=64, blank=True) ## ['10SECR', 'In Draft', 'Schedule 9, 9000.3',...]
+    name = CharField(max_length=128, blank=True) ## ['10SECR', 'In Draft', 'Schedule 9, 9000.3',...]
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SrClass(Model):              # M2M
-    name = CharField(max_length=64, blank=True) ##1,2
+    name = CharField(max_length=128, blank=True) ##1,2
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SupportStatus(Model):        # M2M
-    name = CharField(max_length=64, blank=True) ##COTS,CUSTOM,Custom,GOTS,MOTS
+    name = CharField(max_length=128, blank=True) ##COTS,CUSTOM,Custom,GOTS,MOTS
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class SwLanguage(Model):           # M2M
-    name = CharField(max_length=64, blank=True) ##TOO MANY=827
+    name = CharField(max_length=128, blank=True) ##TOO MANY=827
     def __unicode__(self):
         return u'%s' % (self.name)
 
 class TriageLevel(Model):          # FK
-    name = CharField(max_length=64, blank=True) ## ['Call List', 'Triage 2', 'Triage 3', 'Unassigned']
+    name = CharField(max_length=128, blank=True) ## ['Call List', 'Triage 2', 'Triage 3', 'Unassigned']
     def __unicode__(self):
         return u'%s' % (self.name)
 
@@ -197,7 +197,7 @@ class Application(Model):
     functional_type             = ManyToManyField(FunctionalType, blank=True, null=True) #Acct,Budget,DMS,Finance,GENERAL ADMIN
     gots_poc                    = ForeignKey(GotsPoc, blank=True, null=True) # ['Beverly Smith', 'DCAA', 'DOI NBC', ...]
     hitss_supported             = NullBooleanField(blank=True, null=True)
-    html_link                   = CharField(max_length=128, blank=True, null=True) # TOO MANY: 558
+    html_link                   = CharField(max_length=256, blank=True, null=True) # TOO MANY: 558
     internal_system             = ForeignKey(InternalSystem, blank=True, null=True) # [None, 'E', 'I', 'Not Applicable', 'Unassigned']
     location                    = ManyToManyField(Location, blank=True, null=True) #GSFC,MSFC,NACC-CPO,NASA HQ Hosted,NASA Portal,...
     managed_records             = ForeignKey(ManagedRecords, blank=True, null=True) # [None, 'C', 'CS', 'Unassigned']
@@ -217,7 +217,7 @@ class Application(Model):
     release                     = CharField(max_length=128) # 2.5.3
     release_change_description  = TextField(max_length=128, blank=True, null=True) # TOO MANY: 1684
     release_date                = DateField(blank=True, null=True) # TOO MANY: 1457 TODO DateField
-    release_notes               = CharField(max_length=128, blank=True, null=True) # TOO MANY: 220
+    release_notes               = TextField(max_length=4096, blank=True, null=True) # TOO MANY: 220
     release_status              = ForeignKey(ReleaseStatus, blank=True, null=True) # ['Unknown', 'hgoetzel', 'tmshelto', 'tshelton']
     sec_plan_number             = ForeignKey(SecPlanNumber, blank=True, null=True) # [' 20090812', '0A-801-M-NHQ-0001', '20090812',...]
     section2810compliant        = ForeignKey(Section2810Compliant, blank=True, null=True) # ['No', 'Not Applicable', 'Partial', 'Unassigned', 'Yes']
