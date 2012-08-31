@@ -24,10 +24,16 @@ Run::
 
   python rosa/manage.py runserver
 
-You should get a nice view but no data. 
+You should get a nice view but there's no data yet.
 
-See the 'import' doc for info on how to populate the data from
+You can use the sanitized data by loading the fixture::
+
+  python rosa/manage.py loaddata fixtures/application.json.gz
+
+Or see the 'import' doc for info on how to populate the data from
 production ROSA.
+
+
 
 
 
