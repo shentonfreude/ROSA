@@ -6,3 +6,5 @@ distribute==0.6.28
 django-bootstrap-form==2.0.5
 docutils==0.9.1
 wsgiref==0.1.2
+# For AWS EB
+MySQL-python==1.2.3
