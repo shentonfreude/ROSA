@@ -15,6 +15,7 @@
 
 import logging
 import json
+import sys
 
 from django.core.exceptions import ValidationError
 from django.db.models.fields import FieldDoesNotExist
@@ -24,8 +25,9 @@ from application.models import Application
 
 logging.basicConfig(level=logging.INFO)
 
-#JSON_FILE = "/Users/cshenton/Documents/rosaExportSmall.json"
-JSON_FILE = "/Users/cshenton/Documents/rosaExport.json"
+if len(sys.argv) != 2:
+    raise RuntimeError("Specify rosaExport.json file path as argument")
+JSON_FILE = sys.argv[1]
 
 UNUSED_FIELDS = (               # Never populated in Rosa export
     'acronym_inter_notes',
