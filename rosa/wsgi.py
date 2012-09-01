@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 from "djang-admin.py startproject MAKEWSGI"
 
@@ -13,7 +14,11 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
+import logging
 import os
+import sys
+
+logging.warning("sys.path=%s" % sys.path)
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rosa.settings")
 
