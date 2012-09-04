@@ -1,0 +1,12 @@
+name: ROSA
+instances: 1
+framework:
+  type: python
+mem: 128
+services:
+  mysql-f6c08: mysql
+env:
+  DJANGO_SETTINGS_MODULE: rosa.settings
+  PYTHONPATH: rosa
+ignores: ["bin", "include", "lib"]
+  
