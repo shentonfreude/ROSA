@@ -1,4 +1,5 @@
 import os 
+import urlparse
 
 DATE_INPUT_FORMATS = ('%m/%d/%Y')
 #USE_L10N=True
@@ -15,6 +16,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DATABASES = {}
 if 'RDS_DB_NAME' in os.environ: # Use AWS EB
     DATABASES = {
         'default': {
@@ -26,6 +28,19 @@ if 'RDS_DB_NAME' in os.environ: # Use AWS EB
             'PORT':     os.environ['RDS_PORT'],
         }
     }
+elif 'DATABASE_URL' in os.environ: # Stackato
+    url = urlparse.urlparse(os.environ['DATABASE_URL'])
+    DATABASES['default'] = {
+        'NAME': url.path[1:],
+        'USER': url.username,
+        'PASSWORD': url.password,
+        'HOST': url.hostname,
+        'PORT': url.port,
+        }
+    if url.scheme == 'postgres':
+        DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    elif url.scheme == 'mysql':
+        DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 else:                           # Use local MySQL
     DATABASES = {
         'default': {
